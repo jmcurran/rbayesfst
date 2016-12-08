@@ -1,0 +1,1040 @@
+0
+15
+61
+
+3
+4 76 0                %  G6-PD    OTTAWA 
+45 115 0                %  G6-PD    HAMILTON 
+109 11 0                %  G6-PD    MASSACHUSETTS 
+120 0 0                %  G6-PD    TEXAS 
+0 0 0                %  G6-PD    ARGENTINA 
+0 0 0                %  G6-PD    SWEDEN 
+0 0 0                %  G6-PD    UKRAINE 
+0 0 0                %  G6-PD    CENTRAL_ASIA 
+13 67 0                %  G6-PD    FRANCE 
+47 65 0                %  G6-PD    WEST_AFRICA 
+0 0 0                %  G6-PD    CENTRAL_AFRICA 
+0 0 0                %  G6-PD    KOREA 
+0 74 6                %  G6-PD    TAIWAN 
+7 64 9                %  G6-PD    VIETNAM 
+26 74 0                %  G6-PD    AUSTRALIA 
+
+3
+4 23 53                %  6-PGD    OTTAWA 
+0 38 122                %  6-PGD    HAMILTON 
+0 72 48                %  6-PGD    MASSACHUSETTS 
+0 57 63                %  6-PGD    TEXAS 
+0 0 0                %  6-PGD    ARGENTINA 
+0 0 0                %  6-PGD    SWEDEN 
+0 0 0                %  6-PGD    UKRAINE 
+0 0 0                %  6-PGD    CENTRAL_ASIA 
+0 0 80                %  6-PGD    FRANCE 
+0 0 112                %  6-PGD    WEST_AFRICA 
+0 0 0                %  6-PGD    CENTRAL_AFRICA 
+0 0 0                %  6-PGD    KOREA 
+0 0 80                %  6-PGD    TAIWAN 
+0 8 72                %  6-PGD    VIETNAM 
+0 16 84                %  6-PGD    AUSTRALIA 
+
+8
+0 2 78 0 0 0 0 0      %  PT-11    OTTAWA 
+0 31 105 11 12 0 0 0      %  PT-11    HAMILTON 
+0 2 93 16 9 0 0 0      %  PT-11    MASSACHUSETTS 
+0 4 105 12 0 0 0 0      %  PT-11    TEXAS 
+0 0 0 24 12 0 0 0      %  PT-11    ARGENTINA 
+0 4 6 18 4 4 4 0      %  PT-11    SWEDEN 
+0 4 18 14 8 0 0 0      %  PT-11    UKRAINE 
+4 8 12 16 0 0 0 0      %  PT-11    CENTRAL_ASIA 
+0 17 51 13 0 0 0 0      %  PT-11    FRANCE 
+1 5 79 18 7 0 1 0      %  PT-11    WEST_AFRICA 
+0 4 8 44 8 0 0 4      %  PT-11    CENTRAL_AFRICA 
+0 51 72 0 0 9 0 0      %  PT-11    KOREA 
+0 2 38 9 0 31 0 0      %  PT-11    TAIWAN 
+0 2 37 8 33 0 0 0      %  PT-11    VIETNAM 
+0 4 94 2 0 0 0 0      %  PT-11    AUSTRALIA 
+
+3
+40 40 0                %  GPT    OTTAWA 
+85 64 11                %  GPT    HAMILTON 
+85 16 19                %  GPT    MASSACHUSETTS 
+69 51 0                %  GPT    TEXAS 
+28 8 0                %  GPT    ARGENTINA 
+29 11 0                %  GPT    SWEDEN 
+40 4 0                %  GPT    UKRAINE 
+36 4 0                %  GPT    CENTRAL_ASIA 
+59 21 0                %  GPT    FRANCE 
+4 76 32                %  GPT    WEST_AFRICA 
+20 44 4                %  GPT    CENTRAL_AFRICA 
+121 11 0                %  GPT    KOREA 
+80 0 0                %  GPT    TAIWAN 
+76 4 0                %  GPT    VIETNAM 
+60 38 2                %  GPT    AUSTRALIA 
+
+2
+40 40                  %  ADH    OTTAWA 
+38 122                  %  ADH    HAMILTON 
+63 57                  %  ADH    MASSACHUSETTS 
+103 17                  %  ADH    TEXAS 
+0 0                  %  ADH    ARGENTINA 
+0 0                  %  ADH    SWEDEN 
+0 0                  %  ADH    UKRAINE 
+0 0                  %  ADH    CENTRAL_ASIA 
+0 80                  %  ADH    FRANCE 
+109 3                  %  ADH    WEST_AFRICA 
+0 0                  %  ADH    CENTRAL_AFRICA 
+0 0                  %  ADH    KOREA 
+4 76                  %  ADH    TAIWAN 
+0 80                  %  ADH    VIETNAM 
+22 78                  %  ADH    AUSTRALIA 
+
+2
+80 0                  %  MDH    OTTAWA 
+160 0                  %  MDH    HAMILTON 
+120 0                  %  MDH    MASSACHUSETTS 
+120 0                  %  MDH    TEXAS 
+0 0                  %  MDH    ARGENTINA 
+0 0                  %  MDH    SWEDEN 
+0 0                  %  MDH    UKRAINE 
+0 0                  %  MDH    CENTRAL_ASIA 
+80 0                  %  MDH    FRANCE 
+96 16                  %  MDH    WEST_AFRICA 
+0 0                  %  MDH    CENTRAL_AFRICA 
+0 0                  %  MDH    KOREA 
+80 0                  %  MDH    TAIWAN 
+80 0                  %  MDH    VIETNAM 
+100 0                  %  MDH    AUSTRALIA 
+
+6
+0 0 76 4 0 0          %  PT-10    OTTAWA 
+0 0 149 11 0 0          %  PT-10    HAMILTON 
+0 0 111 3 6 0          %  PT-10    MASSACHUSETTS 
+0 0 97 14 10 0          %  PT-10    TEXAS 
+0 0 28 8 0 0          %  PT-10    ARGENTINA 
+0 0 30 8 2 0          %  PT-10    SWEDEN 
+0 0 28 12 4 0          %  PT-10    UKRAINE 
+0 4 8 28 0 0          %  PT-10    CENTRAL_ASIA 
+0 3 73 2 2 0          %  PT-10    FRANCE 
+1 0 101 0 10 0          %  PT-10    WEST_AFRICA 
+0 0 60 4 0 4          %  PT-10    CENTRAL_AFRICA 
+17 0 95 8 12 0          %  PT-10    KOREA 
+5 0 68 7 0 0          %  PT-10    TAIWAN 
+0 4 72 4 0 0          %  PT-10    VIETNAM 
+0 0 98 2 0 0          %  PT-10    AUSTRALIA 
+
+3
+0 66 14                %  DIP-3    OTTAWA 
+0 157 3                %  DIP-3    HAMILTON 
+0 109 11                %  DIP-3    MASSACHUSETTS 
+0 120 0                %  DIP-3    TEXAS 
+0 36 0                %  DIP-3    ARGENTINA 
+0 40 0                %  DIP-3    SWEDEN 
+0 44 0                %  DIP-3    UKRAINE 
+0 36 4                %  DIP-3    CENTRAL_ASIA 
+0 80 0                %  DIP-3    FRANCE 
+2 104 6                %  DIP-3    WEST_AFRICA 
+0 60 8                %  DIP-3    CENTRAL_AFRICA 
+4 123 4                %  DIP-3    KOREA 
+4 76 0                %  DIP-3    TAIWAN 
+0 80 0                %  DIP-3    VIETNAM 
+4 96 0                %  DIP-3    AUSTRALIA 
+
+4
+0 72 0 8              %  HEX-1    OTTAWA 
+0 142 0 18              %  HEX-1    HAMILTON 
+0 90 0 30              %  HEX-1    MASSACHUSETTS 
+0 112 0 8              %  HEX-1    TEXAS 
+0 8 0 28              %  HEX-1    ARGENTINA 
+0 32 0 8              %  HEX-1    SWEDEN 
+0 30 0 14              %  HEX-1    UKRAINE 
+0 26 0 14              %  HEX-1    CENTRAL_ASIA 
+0 44 0 36              %  HEX-1    FRANCE 
+3 105 3 0              %  HEX-1    WEST_AFRICA 
+0 62 6 0              %  HEX-1    CENTRAL_AFRICA 
+0 111 6 14              %  HEX-1    KOREA 
+0 78 0 2              %  HEX-1    TAIWAN 
+0 80 0 0              %  HEX-1    VIETNAM 
+0 82 0 18              %  HEX-1    AUSTRALIA 
+
+4
+0 80 0 0              %  PHOX    OTTAWA 
+0 149 0 11              %  PHOX    HAMILTON 
+0 120 0 0              %  PHOX    MASSACHUSETTS 
+0 117 3 0              %  PHOX    TEXAS 
+0 36 0 0              %  PHOX    ARGENTINA 
+0 40 0 0              %  PHOX    SWEDEN 
+0 28 16 0              %  PHOX    UKRAINE 
+0 40 0 0              %  PHOX    CENTRAL_ASIA 
+0 76 4 0              %  PHOX    FRANCE 
+0 106 2 4              %  PHOX    WEST_AFRICA 
+0 68 0 0              %  PHOX    CENTRAL_AFRICA 
+0 128 4 0              %  PHOX    KOREA 
+0 80 0 0              %  PHOX    TAIWAN 
+0 80 0 0              %  PHOX    VIETNAM 
+2 98 0 0              %  PHOX    AUSTRALIA 
+
+3
+0 66 14                %  SDH    OTTAWA 
+0 155 5                %  SDH    HAMILTON 
+7 93 20                %  SDH    MASSACHUSETTS 
+0 114 6                %  SDH    TEXAS 
+0 36 0                %  SDH    ARGENTINA 
+0 40 0                %  SDH    SWEDEN 
+0 44 0                %  SDH    UKRAINE 
+8 32 0                %  SDH    CENTRAL_ASIA 
+4 76 0                %  SDH    FRANCE 
+6 106 0                %  SDH    WEST_AFRICA 
+38 30 0                %  SDH    CENTRAL_AFRICA 
+26 106 0                %  SDH    KOREA 
+0 80 0                %  SDH    TAIWAN 
+0 80 0                %  SDH    VIETNAM 
+0 100 0                %  SDH    AUSTRALIA 
+
+4
+0 28 46 6              %  TREH    OTTAWA 
+0 91 64 5              %  TREH    HAMILTON 
+0 38 76 6              %  TREH    MASSACHUSETTS 
+0 33 83 3              %  TREH    TEXAS 
+0 30 6 0              %  TREH    ARGENTINA 
+0 22 16 2              %  TREH    SWEDEN 
+0 18 26 0              %  TREH    UKRAINE 
+0 24 16 0              %  TREH    CENTRAL_ASIA 
+0 13 65 2              %  TREH    FRANCE 
+0 11 101 0              %  TREH    WEST_AFRICA 
+0 4 62 2              %  TREH    CENTRAL_AFRICA 
+0 55 68 8              %  TREH    KOREA 
+4 46 29 0              %  TREH    TAIWAN 
+0 0 80 0              %  TREH    VIETNAM 
+0 42 54 4              %  TREH    AUSTRALIA 
+
+2
+16 64                  %  a-GPD    OTTAWA 
+30 130                  %  a-GPD    HAMILTON 
+20 100                  %  a-GPD    MASSACHUSETTS 
+38 82                  %  a-GPD    TEXAS 
+0 0                  %  a-GPD    ARGENTINA 
+0 0                  %  a-GPD    SWEDEN 
+0 0                  %  a-GPD    UKRAINE 
+0 0                  %  a-GPD    CENTRAL_ASIA 
+42 38                  %  a-GPD    FRANCE 
+0 112                  %  a-GPD    WEST_AFRICA 
+0 0                  %  a-GPD    CENTRAL_AFRICA 
+0 0                  %  a-GPD    KOREA 
+10 70                  %  a-GPD    TAIWAN 
+19 61                  %  a-GPD    VIETNAM 
+21 79                  %  a-GPD    AUSTRALIA 
+
+3
+4 76 0                %  ACPH    OTTAWA 
+3 157 0                %  ACPH    HAMILTON 
+0 120 0                %  ACPH    MASSACHUSETTS 
+8 112 0                %  ACPH    TEXAS 
+0 0 0                %  ACPH    ARGENTINA 
+0 0 0                %  ACPH    SWEDEN 
+0 0 0                %  ACPH    UKRAINE 
+0 0 0                %  ACPH    CENTRAL_ASIA 
+0 80 0                %  ACPH    FRANCE 
+0 111 1                %  ACPH    WEST_AFRICA 
+0 0 0                %  ACPH    CENTRAL_AFRICA 
+0 0 0                %  ACPH    KOREA 
+2 78 0                %  ACPH    TAIWAN 
+0 80 0                %  ACPH    VIETNAM 
+2 98 0                %  ACPH    AUSTRALIA 
+
+9
+2 0 56 0 0 18 0 4 0    %  AO    OTTAWA 
+3 0 142 10 0 5 0 0 0    %  AO    HAMILTON 
+0 2 68 18 8 16 8 0 0    %  AO    MASSACHUSETTS 
+0 3 60 11 23 3 7 5 7    %  AO    TEXAS 
+0 0 0 0 0 0 0 0 0    %  AO    ARGENTINA 
+0 0 0 0 0 0 0 0 0    %  AO    SWEDEN 
+0 0 0 0 0 0 0 0 0    %  AO    UKRAINE 
+0 0 0 0 0 0 0 0 0    %  AO    CENTRAL_ASIA 
+5 0 65 0 6 0 2 1 0    %  AO    FRANCE 
+0 2 14 10 62 4 2 12 4    %  AO    WEST_AFRICA 
+0 0 0 0 0 0 0 0 0    %  AO    CENTRAL_AFRICA 
+0 0 0 0 0 0 0 0 0    %  AO    KOREA 
+0 0 67 2 0 11 0 0 0    %  AO    TAIWAN 
+0 1 61 0 16 0 0 2 0    %  AO    VIETNAM 
+0 0 93 0 0 0 0 7 0    %  AO    AUSTRALIA 
+
+3
+0 78 2                %  APH    OTTAWA 
+0 160 0                %  APH    HAMILTON 
+0 120 0                %  APH    MASSACHUSETTS 
+0 118 2                %  APH    TEXAS 
+0 0 0                %  APH    ARGENTINA 
+0 0 0                %  APH    SWEDEN 
+0 0 0                %  APH    UKRAINE 
+0 0 0                %  APH    CENTRAL_ASIA 
+8 72 0                %  APH    FRANCE 
+0 110 2                %  APH    WEST_AFRICA 
+0 0 0                %  APH    CENTRAL_AFRICA 
+0 0 0                %  APH    KOREA 
+0 69 11                %  APH    TAIWAN 
+0 75 5                %  APH    VIETNAM 
+6 94 0                %  APH    AUSTRALIA 
+
+4
+0 0 80 0              %  EST-C    OTTAWA 
+0 4 156 0              %  EST-C    HAMILTON 
+12 65 41 2              %  EST-C    MASSACHUSETTS 
+3 63 47 8              %  EST-C    TEXAS 
+0 0 0 0              %  EST-C    ARGENTINA 
+0 0 0 0              %  EST-C    SWEDEN 
+0 0 0 0              %  EST-C    UKRAINE 
+0 0 0 0              %  EST-C    CENTRAL_ASIA 
+0 2 78 0              %  EST-C    FRANCE 
+21 50 40 2              %  EST-C    WEST_AFRICA 
+0 0 0 0              %  EST-C    CENTRAL_AFRICA 
+0 0 0 0              %  EST-C    KOREA 
+0 2 78 0              %  EST-C    TAIWAN 
+0 10 70 0              %  EST-C    VIETNAM 
+0 0 100 0              %  EST-C    AUSTRALIA 
+
+4
+0 56 24 0              %  EST-6    OTTAWA 
+0 74 86 0              %  EST-6    HAMILTON 
+0 63 54 3              %  EST-6    MASSACHUSETTS 
+0 44 76 0              %  EST-6    TEXAS 
+0 0 0 0              %  EST-6    ARGENTINA 
+0 0 0 0              %  EST-6    SWEDEN 
+0 0 0 0              %  EST-6    UKRAINE 
+0 0 0 0              %  EST-6    CENTRAL_ASIA 
+0 55 25 0              %  EST-6    FRANCE 
+1 38 69 4              %  EST-6    WEST_AFRICA 
+0 0 0 0              %  EST-6    CENTRAL_AFRICA 
+0 0 0 0              %  EST-6    KOREA 
+15 50 15 0              %  EST-6    TAIWAN 
+6 61 13 0              %  EST-6    VIETNAM 
+0 62 36 2              %  EST-6    AUSTRALIA 
+
+3
+6 74 0                %  LAP-A    OTTAWA 
+16 116 28                %  LAP-A    HAMILTON 
+25 85 10                %  LAP-A    MASSACHUSETTS 
+36 66 18                %  LAP-A    TEXAS 
+0 0 0                %  LAP-A    ARGENTINA 
+0 0 0                %  LAP-A    SWEDEN 
+0 0 0                %  LAP-A    UKRAINE 
+0 0 0                %  LAP-A    CENTRAL_ASIA 
+25 31 24                %  LAP-A    FRANCE 
+69 43 0                %  LAP-A    WEST_AFRICA 
+0 0 0                %  LAP-A    CENTRAL_AFRICA 
+0 0 0                %  LAP-A    KOREA 
+17 63 0                %  LAP-A    TAIWAN 
+40 38 2                %  LAP-A    VIETNAM 
+8 88 4                %  LAP-A    AUSTRALIA 
+
+3
+0 2 78                %  LAP-D    OTTAWA 
+0 20 140                %  LAP-D    HAMILTON 
+0 16 104                %  LAP-D    MASSACHUSETTS 
+0 27 93                %  LAP-D    TEXAS 
+0 0 0                %  LAP-D    ARGENTINA 
+0 0 0                %  LAP-D    SWEDEN 
+0 0 0                %  LAP-D    UKRAINE 
+0 0 0                %  LAP-D    CENTRAL_ASIA 
+8 28 44                %  LAP-D    FRANCE 
+21 77 16                %  LAP-D    WEST_AFRICA 
+0 0 0                %  LAP-D    CENTRAL_AFRICA 
+0 0 0                %  LAP-D    KOREA 
+0 12 68                %  LAP-D    TAIWAN 
+4 17 59                %  LAP-D    VIETNAM 
+0 34 66                %  LAP-D    AUSTRALIA 
+
+2
+8 72                  %  ODH-1    OTTAWA 
+11 149                  %  ODH-1    HAMILTON 
+11 109                  %  ODH-1    MASSACHUSETTS 
+46 74                  %  ODH-1    TEXAS 
+0 0                  %  ODH-1    ARGENTINA 
+0 0                  %  ODH-1    SWEDEN 
+0 0                  %  ODH-1    UKRAINE 
+0 0                  %  ODH-1    CENTRAL_ASIA 
+0 80                  %  ODH-1    FRANCE 
+15 97                  %  ODH-1    WEST_AFRICA 
+0 0                  %  ODH-1    CENTRAL_AFRICA 
+0 0                  %  ODH-1    KOREA 
+4 76                  %  ODH-1    TAIWAN 
+0 80                  %  ODH-1    VIETNAM 
+0 100                  %  ODH-1    AUSTRALIA 
+
+4
+8 72 0 0              %  PGM    OTTAWA 
+3 133 24 0              %  PGM    HAMILTON 
+3 109 9 0              %  PGM    MASSACHUSETTS 
+11 94 14 0              %  PGM    TEXAS 
+0 0 0 0              %  PGM    ARGENTINA 
+0 0 0 0              %  PGM    SWEDEN 
+0 0 0 0              %  PGM    UKRAINE 
+0 0 0 0              %  PGM    CENTRAL_ASIA 
+2 78 0 0              %  PGM    FRANCE 
+7 79 21 5              %  PGM    WEST_AFRICA 
+0 0 0 0              %  PGM    CENTRAL_AFRICA 
+0 0 0 0              %  PGM    KOREA 
+0 80 0 0              %  PGM    TAIWAN 
+0 80 0 0              %  PGM    VIETNAM 
+14 84 2 0              %  PGM    AUSTRALIA 
+
+4
+80 0 0 0              %  PT-9    OTTAWA 
+0 0 0 0              %  PT-9    HAMILTON 
+109 8 3 0              %  PT-9    MASSACHUSETTS 
+95 6 15 4              %  PT-9    TEXAS 
+28 8 0 0              %  PT-9    ARGENTINA 
+28 8 4 0              %  PT-9    SWEDEN 
+24 8 12 0              %  PT-9    UKRAINE 
+0 24 16 0              %  PT-9    CENTRAL_ASIA 
+70 9 1 0              %  PT-9    FRANCE 
+107 0 5 0              %  PT-9    WEST_AFRICA 
+4 64 0 0              %  PT-9    CENTRAL_AFRICA 
+96 16 20 0              %  PT-9    KOREA 
+73 7 0 0              %  PT-9    TAIWAN 
+80 0 0 0              %  PT-9    VIETNAM 
+100 0 0 0              %  PT-9    AUSTRALIA 
+
+4
+0 0 80 0              %  PT-15    OTTAWA 
+17 0 143 0              %  PT-15    HAMILTON 
+17 0 103 0              %  PT-15    MASSACHUSETTS 
+0 0 120 0              %  PT-15    TEXAS 
+0 0 36 0              %  PT-15    ARGENTINA 
+4 0 36 0              %  PT-15    SWEDEN 
+4 36 4 0              %  PT-15    UKRAINE 
+6 34 0 0              %  PT-15    CENTRAL_ASIA 
+2 0 78 0              %  PT-15    FRANCE 
+0 26 86 0              %  PT-15    WEST_AFRICA 
+2 4 62 0              %  PT-15    CENTRAL_AFRICA 
+0 0 132 0              %  PT-15    KOREA 
+2 0 75 2              %  PT-15    TAIWAN 
+0 0 80 0              %  PT-15    VIETNAM 
+2 0 98 0              %  PT-15    AUSTRALIA 
+
+8
+0 0 0 4 14 42 20 0      %  XDH    OTTAWA 
+0 0 3 5 26 116 10 0      %  XDH    HAMILTON 
+0 0 12 6 12 80 8 2      %  XDH    MASSACHUSETTS 
+0 0 0 7 25 81 7 0      %  XDH    TEXAS 
+0 0 0 0 0 0 0 0      %  XDH    ARGENTINA 
+0 0 0 0 0 0 0 0      %  XDH    SWEDEN 
+0 0 0 0 0 0 0 0      %  XDH    UKRAINE 
+0 0 0 0 0 0 0 0      %  XDH    CENTRAL_ASIA 
+0 5 0 0 49 22 4 0      %  XDH    FRANCE 
+0 0 0 0 31 69 12 0      %  XDH    WEST_AFRICA 
+0 0 0 0 0 0 0 0      %  XDH    CENTRAL_AFRICA 
+0 0 0 0 0 0 0 0      %  XDH    KOREA 
+0 0 0 0 42 36 2 0      %  XDH    TAIWAN 
+2 0 3 0 53 20 2 0      %  XDH    VIETNAM 
+0 0 0 0 20 66 14 0      %  XDH    AUSTRALIA 
+
+2
+0 80                  %  TO-1    OTTAWA 
+0 160                  %  TO-1    HAMILTON 
+18 102                  %  TO-1    MASSACHUSETTS 
+21 99                  %  TO-1    TEXAS 
+0 0                  %  TO-1    ARGENTINA 
+0 0                  %  TO-1    SWEDEN 
+0 0                  %  TO-1    UKRAINE 
+0 0                  %  TO-1    CENTRAL_ASIA 
+19 61                  %  TO-1    FRANCE 
+0 112                  %  TO-1    WEST_AFRICA 
+0 0                  %  TO-1    CENTRAL_AFRICA 
+0 0                  %  TO-1    KOREA 
+0 80                  %  TO-1    TAIWAN 
+0 80                  %  TO-1    VIETNAM 
+10 90                  %  TO-1    AUSTRALIA 
+
+4
+0 80 0 0              %  GO    OTTAWA 
+11 108 41 0              %  GO    HAMILTON 
+0 98 22 0              %  GO    MASSACHUSETTS 
+0 120 0 0              %  GO    TEXAS 
+0 28 8 0              %  GO    ARGENTINA 
+0 38 2 0              %  GO    SWEDEN 
+0 32 4 8              %  GO    UKRAINE 
+0 38 2 0              %  GO    CENTRAL_ASIA 
+0 78 2 0              %  GO    FRANCE 
+0 90 22 0              %  GO    WEST_AFRICA 
+0 60 8 0              %  GO    CENTRAL_AFRICA 
+8 108 16 0              %  GO    KOREA 
+0 57 23 0              %  GO    TAIWAN 
+2 50 28 0              %  GO    VIETNAM 
+0 96 4 0              %  GO    AUSTRALIA 
+
+2
+78 2                  %  IDH-1    OTTAWA 
+160 0                  %  IDH-1    HAMILTON 
+120 0                  %  IDH-1    MASSACHUSETTS 
+120 0                  %  IDH-1    TEXAS 
+36 0                  %  IDH-1    ARGENTINA 
+40 0                  %  IDH-1    SWEDEN 
+44 0                  %  IDH-1    UKRAINE 
+40 0                  %  IDH-1    CENTRAL_ASIA 
+76 4                  %  IDH-1    FRANCE 
+112 0                  %  IDH-1    WEST_AFRICA 
+68 0                  %  IDH-1    CENTRAL_AFRICA 
+127 5                  %  IDH-1    KOREA 
+72 8                  %  IDH-1    TAIWAN 
+80 0                  %  IDH-1    VIETNAM 
+100 0                  %  IDH-1    AUSTRALIA 
+
+2
+80 0                  %  MDH-2    OTTAWA 
+160 0                  %  MDH-2    HAMILTON 
+107 13                  %  MDH-2    MASSACHUSETTS 
+120 0                  %  MDH-2    TEXAS 
+36 0                  %  MDH-2    ARGENTINA 
+32 8                  %  MDH-2    SWEDEN 
+40 4                  %  MDH-2    UKRAINE 
+32 8                  %  MDH-2    CENTRAL_ASIA 
+80 0                  %  MDH-2    FRANCE 
+112 0                  %  MDH-2    WEST_AFRICA 
+68 0                  %  MDH-2    CENTRAL_AFRICA 
+132 0                  %  MDH-2    KOREA 
+80 0                  %  MDH-2    TAIWAN 
+80 0                  %  MDH-2    VIETNAM 
+96 4                  %  MDH-2    AUSTRALIA 
+
+3
+0 69 11                %  SODH-1    OTTAWA 
+0 160 0                %  SODH-1    HAMILTON 
+0 120 0                %  SODH-1    MASSACHUSETTS 
+0 120 0                %  SODH-1    TEXAS 
+0 32 4                %  SODH-1    ARGENTINA 
+0 36 4                %  SODH-1    SWEDEN 
+0 44 0                %  SODH-1    UKRAINE 
+0 40 0                %  SODH-1    CENTRAL_ASIA 
+0 78 2                %  SODH-1    FRANCE 
+0 112 0                %  SODH-1    WEST_AFRICA 
+0 68 0                %  SODH-1    CENTRAL_AFRICA 
+11 121 0                %  SODH-1    KOREA 
+0 72 8                %  SODH-1    TAIWAN 
+0 80 0                %  SODH-1    VIETNAM 
+0 98 2                %  SODH-1    AUSTRALIA 
+
+3
+57 23 0                %  a-FUC    OTTAWA 
+130 30 0                %  a-FUC    HAMILTON 
+72 48 0                %  a-FUC    MASSACHUSETTS 
+76 44 0                %  a-FUC    TEXAS 
+26 10 0                %  a-FUC    ARGENTINA 
+16 24 0                %  a-FUC    SWEDEN 
+40 4 0                %  a-FUC    UKRAINE 
+12 28 0                %  a-FUC    CENTRAL_ASIA 
+51 24 4                %  a-FUC    FRANCE 
+47 51 14                %  a-FUC    WEST_AFRICA 
+29 39 0                %  a-FUC    CENTRAL_AFRICA 
+54 78 0                %  a-FUC    KOREA 
+44 27 8                %  a-FUC    TAIWAN 
+32 48 0                %  a-FUC    VIETNAM 
+68 32 0                %  a-FUC    AUSTRALIA 
+
+5
+0 32 48 0 0            %  EST-9    OTTAWA 
+0 61 99 0 0            %  EST-9    HAMILTON 
+0 75 45 0 0            %  EST-9    MASSACHUSETTS 
+0 63 54 3 0            %  EST-9    TEXAS 
+0 0 0 0 0            %  EST-9    ARGENTINA 
+0 0 0 0 0            %  EST-9    SWEDEN 
+0 0 0 0 0            %  EST-9    UKRAINE 
+0 0 0 0 0            %  EST-9    CENTRAL_ASIA 
+0 34 44 2 0            %  EST-9    FRANCE 
+13 37 53 5 3            %  EST-9    WEST_AFRICA 
+0 0 0 0 0            %  EST-9    CENTRAL_AFRICA 
+0 0 0 0 0            %  EST-9    KOREA 
+2 57 19 2 0            %  EST-9    TAIWAN 
+0 66 14 0 0            %  EST-9    VIETNAM 
+0 46 54 0 0            %  EST-9    AUSTRALIA 
+
+5
+0 0 80 0 0            %  EST-10    OTTAWA 
+8 0 144 0 8            %  EST-10    HAMILTON 
+0 0 117 3 0            %  EST-10    MASSACHUSETTS 
+0 0 120 0 0            %  EST-10    TEXAS 
+0 0 0 0 0            %  EST-10    ARGENTINA 
+0 0 0 0 0            %  EST-10    SWEDEN 
+0 0 0 0 0            %  EST-10    UKRAINE 
+0 0 0 0 0            %  EST-10    CENTRAL_ASIA 
+0 0 80 0 0            %  EST-10    FRANCE 
+0 0 107 0 5            %  EST-10    WEST_AFRICA 
+0 0 0 0 0            %  EST-10    CENTRAL_AFRICA 
+0 0 0 0 0            %  EST-10    KOREA 
+0 0 80 0 0            %  EST-10    TAIWAN 
+0 4 76 0 0            %  EST-10    VIETNAM 
+0 0 100 0 0            %  EST-10    AUSTRALIA 
+
+4
+0 80 0 0              %  LAP-6    OTTAWA 
+27 111 23 0              %  LAP-6    HAMILTON 
+0 105 15 0              %  LAP-6    MASSACHUSETTS 
+36 72 12 0              %  LAP-6    TEXAS 
+0 0 0 0              %  LAP-6    ARGENTINA 
+0 0 0 0              %  LAP-6    SWEDEN 
+0 0 0 0              %  LAP-6    UKRAINE 
+0 0 0 0              %  LAP-6    CENTRAL_ASIA 
+0 34 42 4              %  LAP-6    FRANCE 
+0 112 0 0              %  LAP-6    WEST_AFRICA 
+0 0 0 0              %  LAP-6    CENTRAL_AFRICA 
+0 0 0 0              %  LAP-6    KOREA 
+0 14 66 0              %  LAP-6    TAIWAN 
+0 60 20 0              %  LAP-6    VIETNAM 
+0 20 80 0              %  LAP-6    AUSTRALIA 
+
+2
+0 80                  %  TO-2    OTTAWA 
+0 160                  %  TO-2    HAMILTON 
+0 120                  %  TO-2    MASSACHUSETTS 
+7 113                  %  TO-2    TEXAS 
+0 0                  %  TO-2    ARGENTINA 
+0 0                  %  TO-2    SWEDEN 
+0 0                  %  TO-2    UKRAINE 
+0 0                  %  TO-2    CENTRAL_ASIA 
+0 80                  %  TO-2    FRANCE 
+0 112                  %  TO-2    WEST_AFRICA 
+0 0                  %  TO-2    CENTRAL_AFRICA 
+0 0                  %  TO-2    KOREA 
+0 80                  %  TO-2    TAIWAN 
+0 80                  %  TO-2    VIETNAM 
+0 100                  %  TO-2    AUSTRALIA 
+
+3
+0 52 28                %  CA-1    OTTAWA 
+0 90 70                %  CA-1    HAMILTON 
+0 63 57                %  CA-1    MASSACHUSETTS 
+0 44 76                %  CA-1    TEXAS 
+0 36 0                %  CA-1    ARGENTINA 
+4 36 0                %  CA-1    SWEDEN 
+0 44 0                %  CA-1    UKRAINE 
+2 38 0                %  CA-1    CENTRAL_ASIA 
+0 53 27                %  CA-1    FRANCE 
+0 44 68                %  CA-1    WEST_AFRICA 
+0 32 36                %  CA-1    CENTRAL_AFRICA 
+0 99 33                %  CA-1    KOREA 
+23 44 13                %  CA-1    TAIWAN 
+0 64 16                %  CA-1    VIETNAM 
+0 96 4                %  CA-1    AUSTRALIA 
+
+3
+0 80 0                %  CA-2    OTTAWA 
+0 160 0                %  CA-2    HAMILTON 
+6 111 3                %  CA-2    MASSACHUSETTS 
+0 98 22                %  CA-2    TEXAS 
+0 28 8                %  CA-2    ARGENTINA 
+4 34 2                %  CA-2    SWEDEN 
+0 44 0                %  CA-2    UKRAINE 
+2 34 4                %  CA-2    CENTRAL_ASIA 
+0 80 0                %  CA-2    FRANCE 
+0 104 8                %  CA-2    WEST_AFRICA 
+4 64 0                %  CA-2    CENTRAL_AFRICA 
+0 132 0                %  CA-2    KOREA 
+0 78 2                %  CA-2    TAIWAN 
+0 80 0                %  CA-2    VIETNAM 
+0 100 0                %  CA-2    AUSTRALIA 
+
+3
+0 80 0                %  CA-3    OTTAWA 
+0 160 0                %  CA-3    HAMILTON 
+0 120 0                %  CA-3    MASSACHUSETTS 
+6 114 0                %  CA-3    TEXAS 
+0 36 0                %  CA-3    ARGENTINA 
+0 40 0                %  CA-3    SWEDEN 
+0 44 0                %  CA-3    UKRAINE 
+0 40 0                %  CA-3    CENTRAL_ASIA 
+0 80 0                %  CA-3    FRANCE 
+4 108 0                %  CA-3    WEST_AFRICA 
+0 64 4                %  CA-3    CENTRAL_AFRICA 
+0 132 0                %  CA-3    KOREA 
+0 80 0                %  CA-3    TAIWAN 
+0 80 0                %  CA-3    VIETNAM 
+0 100 0                %  CA-3    AUSTRALIA 
+
+4
+0 78 0 2              %  CA-4    OTTAWA 
+0 155 0 5              %  CA-4    HAMILTON 
+0 114 6 0              %  CA-4    MASSACHUSETTS 
+0 120 0 0              %  CA-4    TEXAS 
+0 36 0 0              %  CA-4    ARGENTINA 
+0 40 0 0              %  CA-4    SWEDEN 
+0 44 0 0              %  CA-4    UKRAINE 
+4 32 4 0              %  CA-4    CENTRAL_ASIA 
+0 76 0 4              %  CA-4    FRANCE 
+0 112 0 0              %  CA-4    WEST_AFRICA 
+0 68 0 0              %  CA-4    CENTRAL_AFRICA 
+0 132 0 0              %  CA-4    KOREA 
+0 80 0 0              %  CA-4    TAIWAN 
+0 72 8 0              %  CA-4    VIETNAM 
+0 100 0 0              %  CA-4    AUSTRALIA 
+
+4
+0 56 24 0              %  ACON-1    OTTAWA 
+0 84 76 0              %  ACON-1    HAMILTON 
+0 57 63 0              %  ACON-1    MASSACHUSETTS 
+0 104 16 0              %  ACON-1    TEXAS 
+0 32 4 0              %  ACON-1    ARGENTINA 
+0 20 20 0              %  ACON-1    SWEDEN 
+0 28 16 0              %  ACON-1    UKRAINE 
+0 34 6 0              %  ACON-1    CENTRAL_ASIA 
+0 51 29 0              %  ACON-1    FRANCE 
+2 98 12 0              %  ACON-1    WEST_AFRICA 
+0 52 16 0              %  ACON-1    CENTRAL_AFRICA 
+0 88 44 0              %  ACON-1    KOREA 
+0 51 29 0              %  ACON-1    TAIWAN 
+0 58 22 0              %  ACON-1    VIETNAM 
+0 78 20 2              %  ACON-1    AUSTRALIA 
+
+4
+0 74 6 0              %  ACON-2    OTTAWA 
+0 136 21 3              %  ACON-2    HAMILTON 
+0 104 16 0              %  ACON-2    MASSACHUSETTS 
+16 73 32 0              %  ACON-2    TEXAS 
+0 36 0 0              %  ACON-2    ARGENTINA 
+8 24 8 0              %  ACON-2    SWEDEN 
+0 40 4 0              %  ACON-2    UKRAINE 
+0 36 4 0              %  ACON-2    CENTRAL_ASIA 
+0 72 8 0              %  ACON-2    FRANCE 
+0 84 26 2              %  ACON-2    WEST_AFRICA 
+0 62 6 0              %  ACON-2    CENTRAL_AFRICA 
+0 120 12 0              %  ACON-2    KOREA 
+0 69 11 0              %  ACON-2    TAIWAN 
+0 80 0 0              %  ACON-2    VIETNAM 
+4 70 20 6              %  ACON-2    AUSTRALIA 
+
+3
+0 80 0                %  ADK-1    OTTAWA 
+14 146 0                %  ADK-1    HAMILTON 
+0 114 6                %  ADK-1    MASSACHUSETTS 
+0 120 0                %  ADK-1    TEXAS 
+0 36 0                %  ADK-1    ARGENTINA 
+0 40 0                %  ADK-1    SWEDEN 
+0 44 0                %  ADK-1    UKRAINE 
+0 40 0                %  ADK-1    CENTRAL_ASIA 
+0 80 0                %  ADK-1    FRANCE 
+0 112 0                %  ADK-1    WEST_AFRICA 
+0 68 0                %  ADK-1    CENTRAL_AFRICA 
+0 132 0                %  ADK-1    KOREA 
+0 80 0                %  ADK-1    TAIWAN 
+0 80 0                %  ADK-1    VIETNAM 
+0 92 8                %  ADK-1    AUSTRALIA 
+
+3
+0 72 8                %  DIA-1    OTTAWA 
+0 143 17                %  DIA-1    HAMILTON 
+6 88 25                %  DIA-1    MASSACHUSETTS 
+0 108 12                %  DIA-1    TEXAS 
+2 30 4                %  DIA-1    ARGENTINA 
+2 38 0                %  DIA-1    SWEDEN 
+0 44 0                %  DIA-1    UKRAINE 
+0 40 0                %  DIA-1    CENTRAL_ASIA 
+0 56 24                %  DIA-1    FRANCE 
+17 95 0                %  DIA-1    WEST_AFRICA 
+4 54 10                %  DIA-1    CENTRAL_AFRICA 
+0 123 9                %  DIA-1    KOREA 
+0 75 5                %  DIA-1    TAIWAN 
+0 80 0                %  DIA-1    VIETNAM 
+14 86 0                %  DIA-1    AUSTRALIA 
+
+5
+0 10 70 0 0            %  DIA-2    OTTAWA 
+0 31 129 0 0            %  DIA-2    HAMILTON 
+0 16 104 0 0            %  DIA-2    MASSACHUSETTS 
+0 12 99 9 0            %  DIA-2    TEXAS 
+0 8 28 0 0            %  DIA-2    ARGENTINA 
+0 4 32 4 0            %  DIA-2    SWEDEN 
+0 15 11 18 0            %  DIA-2    UKRAINE 
+0 0 26 10 4            %  DIA-2    CENTRAL_ASIA 
+4 7 47 18 4            %  DIA-2    FRANCE 
+0 9 103 0 0            %  DIA-2    WEST_AFRICA 
+0 6 58 4 0            %  DIA-2    CENTRAL_AFRICA 
+0 31 70 31 0            %  DIA-2    KOREA 
+0 13 67 0 0            %  DIA-2    TAIWAN 
+0 0 70 10 0            %  DIA-2    VIETNAM 
+0 12 66 18 4            %  DIA-2    AUSTRALIA 
+
+4
+0 80 0 0              %  DIA-7    OTTAWA 
+0 160 0 0              %  DIA-7    HAMILTON 
+6 114 0 0              %  DIA-7    MASSACHUSETTS 
+0 120 0 0              %  DIA-7    TEXAS 
+0 36 0 0              %  DIA-7    ARGENTINA 
+0 40 0 0              %  DIA-7    SWEDEN 
+0 40 0 4              %  DIA-7    UKRAINE 
+0 40 0 0              %  DIA-7    CENTRAL_ASIA 
+0 76 4 0              %  DIA-7    FRANCE 
+0 108 4 0              %  DIA-7    WEST_AFRICA 
+0 68 0 0              %  DIA-7    CENTRAL_AFRICA 
+0 132 0 0              %  DIA-7    KOREA 
+0 80 0 0              %  DIA-7    TAIWAN 
+0 66 14 0              %  DIA-7    VIETNAM 
+0 100 0 0              %  DIA-7    AUSTRALIA 
+
+5
+0 46 22 12 0            %  GDH    OTTAWA 
+0 57 86 17 0            %  GDH    HAMILTON 
+0 88 13 19 0            %  GDH    MASSACHUSETTS 
+0 30 77 13 0            %  GDH    TEXAS 
+0 14 22 0 0            %  GDH    ARGENTINA 
+28 8 4 0 0            %  GDH    SWEDEN 
+22 18 4 0 0            %  GDH    UKRAINE 
+6 26 4 0 4            %  GDH    CENTRAL_ASIA 
+13 40 27 0 0            %  GDH    FRANCE 
+0 61 37 15 0            %  GDH    WEST_AFRICA 
+0 20 48 0 0            %  GDH    CENTRAL_AFRICA 
+28 28 76 0 0            %  GDH    KOREA 
+18 48 14 0 0            %  GDH    TAIWAN 
+4 16 60 0 0            %  GDH    VIETNAM 
+46 31 23 0 0            %  GDH    AUSTRALIA 
+
+5
+0 0 59 21 0            %  a-GLU-4    OTTAWA 
+0 0 137 23 0            %  a-GLU-4    HAMILTON 
+0 9 75 36 0            %  a-GLU-4    MASSACHUSETTS 
+0 0 98 22 0            %  a-GLU-4    TEXAS 
+0 0 36 0 0            %  a-GLU-4    ARGENTINA 
+0 0 28 12 0            %  a-GLU-4    SWEDEN 
+0 0 38 6 0            %  a-GLU-4    UKRAINE 
+2 0 26 12 0            %  a-GLU-4    CENTRAL_ASIA 
+0 0 51 29 0            %  a-GLU-4    FRANCE 
+0 10 78 24 0            %  a-GLU-4    WEST_AFRICA 
+0 2 46 16 4            %  a-GLU-4    CENTRAL_AFRICA 
+0 4 97 31 0            %  a-GLU-4    KOREA 
+0 4 72 4 0            %  a-GLU-4    TAIWAN 
+0 8 16 56 0            %  a-GLU-4    VIETNAM 
+0 0 54 46 0            %  a-GLU-4    AUSTRALIA 
+
+5
+0 60 0 20 0            %  GLUD    OTTAWA 
+0 135 0 25 0            %  GLUD    HAMILTON 
+0 117 0 3 0            %  GLUD    MASSACHUSETTS 
+0 104 0 16 0            %  GLUD    TEXAS 
+0 36 0 0 0            %  GLUD    ARGENTINA 
+8 30 0 2 0            %  GLUD    SWEDEN 
+4 40 0 0 0            %  GLUD    UKRAINE 
+4 28 0 6 2            %  GLUD    CENTRAL_ASIA 
+0 75 0 5 0            %  GLUD    FRANCE 
+13 99 0 0 0            %  GLUD    WEST_AFRICA 
+0 64 0 4 0            %  GLUD    CENTRAL_AFRICA 
+0 75 9 47 0            %  GLUD    KOREA 
+0 20 0 60 0            %  GLUD    TAIWAN 
+0 2 15 63 0            %  GLUD    VIETNAM 
+0 88 1 11 0            %  GLUD    AUSTRALIA 
+
+4
+0 0 80 0              %  MPI    OTTAWA 
+0 0 160 0              %  MPI    HAMILTON 
+6 0 114 0              %  MPI    MASSACHUSETTS 
+0 0 120 0              %  MPI    TEXAS 
+0 0 36 0              %  MPI    ARGENTINA 
+0 0 40 0              %  MPI    SWEDEN 
+0 0 44 0              %  MPI    UKRAINE 
+0 0 40 0              %  MPI    CENTRAL_ASIA 
+0 0 80 0              %  MPI    FRANCE 
+7 0 105 0              %  MPI    WEST_AFRICA 
+4 0 64 0              %  MPI    CENTRAL_AFRICA 
+0 12 120 0              %  MPI    KOREA 
+0 0 80 0              %  MPI    TAIWAN 
+0 0 80 0              %  MPI    VIETNAM 
+4 0 94 2              %  MPI    AUSTRALIA 
+
+3
+0 80 0                %  a-MAN-4    OTTAWA 
+0 160 0                %  a-MAN-4    HAMILTON 
+28 92 0                %  a-MAN-4    MASSACHUSETTS 
+12 108 0                %  a-MAN-4    TEXAS 
+10 26 0                %  a-MAN-4    ARGENTINA 
+0 40 0                %  a-MAN-4    SWEDEN 
+0 44 0                %  a-MAN-4    UKRAINE 
+0 40 0                %  a-MAN-4    CENTRAL_ASIA 
+0 80 0                %  a-MAN-4    FRANCE 
+0 112 0                %  a-MAN-4    WEST_AFRICA 
+0 63 5                %  a-MAN-4    CENTRAL_AFRICA 
+0 132 0                %  a-MAN-4    KOREA 
+4 76 0                %  a-MAN-4    TAIWAN 
+0 80 0                %  a-MAN-4    VIETNAM 
+0 100 0                %  a-MAN-4    AUSTRALIA 
+
+4
+6 54 20 0              %  PT-1    OTTAWA 
+0 128 32 0              %  PT-1    HAMILTON 
+0 90 22 7              %  PT-1    MASSACHUSETTS 
+0 92 28 0              %  PT-1    TEXAS 
+6 32 0 0              %  PT-1    ARGENTINA 
+0 34 6 0              %  PT-1    SWEDEN 
+0 20 24 0              %  PT-1    UKRAINE 
+0 20 20 0              %  PT-1    CENTRAL_ASIA 
+7 58 16 0              %  PT-1    FRANCE 
+5 44 63 0              %  PT-1    WEST_AFRICA 
+9 57 2 0              %  PT-1    CENTRAL_AFRICA 
+4 99 29 0              %  PT-1    KOREA 
+0 66 14 0              %  PT-1    TAIWAN 
+3 47 30 0              %  PT-1    VIETNAM 
+0 92 8 0              %  PT-1    AUSTRALIA 
+
+4
+0 80 0 0              %  PT-2    OTTAWA 
+0 136 24 0              %  PT-2    HAMILTON 
+0 116 4 0              %  PT-2    MASSACHUSETTS 
+0 120 0 0              %  PT-2    TEXAS 
+0 36 0 0              %  PT-2    ARGENTINA 
+0 36 4 0              %  PT-2    SWEDEN 
+2 42 0 0              %  PT-2    UKRAINE 
+0 40 0 0              %  PT-2    CENTRAL_ASIA 
+0 80 0 0              %  PT-2    FRANCE 
+2 110 0 0              %  PT-2    WEST_AFRICA 
+0 68 0 0              %  PT-2    CENTRAL_AFRICA 
+0 132 0 0              %  PT-2    KOREA 
+4 68 4 4              %  PT-2    TAIWAN 
+0 78 2 0              %  PT-2    VIETNAM 
+8 88 4 0              %  PT-2    AUSTRALIA 
+
+2
+80 0                  %  PT-6    OTTAWA 
+160 0                  %  PT-6    HAMILTON 
+120 0                  %  PT-6    MASSACHUSETTS 
+120 0                  %  PT-6    TEXAS 
+36 0                  %  PT-6    ARGENTINA 
+40 0                  %  PT-6    SWEDEN 
+35 9                  %  PT-6    UKRAINE 
+40 0                  %  PT-6    CENTRAL_ASIA 
+80 0                  %  PT-6    FRANCE 
+110 2                  %  PT-6    WEST_AFRICA 
+64 4                  %  PT-6    CENTRAL_AFRICA 
+107 25                  %  PT-6    KOREA 
+76 4                  %  PT-6    TAIWAN 
+68 12                  %  PT-6    VIETNAM 
+96 4                  %  PT-6    AUSTRALIA 
+
+2
+0 80                  %  PT-7A    OTTAWA 
+4 156                  %  PT-7A    HAMILTON 
+26 94                  %  PT-7A    MASSACHUSETTS 
+3 117                  %  PT-7A    TEXAS 
+0 36                  %  PT-7A    ARGENTINA 
+0 40                  %  PT-7A    SWEDEN 
+0 44                  %  PT-7A    UKRAINE 
+0 40                  %  PT-7A    CENTRAL_ASIA 
+0 80                  %  PT-7A    FRANCE 
+0 112                  %  PT-7A    WEST_AFRICA 
+0 68                  %  PT-7A    CENTRAL_AFRICA 
+0 132                  %  PT-7A    KOREA 
+36 44                  %  PT-7A    TAIWAN 
+9 71                  %  PT-7A    VIETNAM 
+0 100                  %  PT-7A    AUSTRALIA 
+
+4
+0 76 0 4              %  PT-9A    OTTAWA 
+0 136 0 24              %  PT-9A    HAMILTON 
+0 120 0 0              %  PT-9A    MASSACHUSETTS 
+0 120 0 0              %  PT-9A    TEXAS 
+0 36 0 0              %  PT-9A    ARGENTINA 
+0 36 0 4              %  PT-9A    SWEDEN 
+0 36 0 8              %  PT-9A    UKRAINE 
+0 40 0 0              %  PT-9A    CENTRAL_ASIA 
+0 73 2 4              %  PT-9A    FRANCE 
+0 112 0 0              %  PT-9A    WEST_AFRICA 
+2 66 0 0              %  PT-9A    CENTRAL_AFRICA 
+0 132 0 0              %  PT-9A    KOREA 
+0 80 0 0              %  PT-9A    TAIWAN 
+0 80 0 0              %  PT-9A    VIETNAM 
+0 100 0 0              %  PT-9A    AUSTRALIA 
+
+3
+0 80 0                %  PT-10B    OTTAWA 
+0 155 5                %  PT-10B    HAMILTON 
+0 120 0                %  PT-10B    MASSACHUSETTS 
+0 120 0                %  PT-10B    TEXAS 
+0 36 0                %  PT-10B    ARGENTINA 
+0 40 0                %  PT-10B    SWEDEN 
+0 44 0                %  PT-10B    UKRAINE 
+0 40 0                %  PT-10B    CENTRAL_ASIA 
+0 80 0                %  PT-10B    FRANCE 
+2 110 0                %  PT-10B    WEST_AFRICA 
+4 61 2                %  PT-10B    CENTRAL_AFRICA 
+0 126 6                %  PT-10B    KOREA 
+4 76 0                %  PT-10B    TAIWAN 
+16 64 0                %  PT-10B    VIETNAM 
+0 100 0                %  PT-10B    AUSTRALIA 
+
+3
+0 80 0                %  PT-12    OTTAWA 
+5 155 0                %  PT-12    HAMILTON 
+0 116 4                %  PT-12    MASSACHUSETTS 
+0 120 0                %  PT-12    TEXAS 
+0 36 0                %  PT-12    ARGENTINA 
+0 38 2                %  PT-12    SWEDEN 
+0 44 0                %  PT-12    UKRAINE 
+0 40 0                %  PT-12    CENTRAL_ASIA 
+0 79 1                %  PT-12    FRANCE 
+0 111 1                %  PT-12    WEST_AFRICA 
+0 68 0                %  PT-12    CENTRAL_AFRICA 
+0 132 0                %  PT-12    KOREA 
+4 76 0                %  PT-12    TAIWAN 
+0 80 0                %  PT-12    VIETNAM 
+0 100 0                %  PT-12    AUSTRALIA 
+
+4
+0 0 0 0              %  PT-13    OTTAWA 
+5 0 155 0              %  PT-13    HAMILTON 
+0 4 116 0              %  PT-13    MASSACHUSETTS 
+0 23 97 0              %  PT-13    TEXAS 
+0 0 36 0              %  PT-13    ARGENTINA 
+2 4 34 0              %  PT-13    SWEDEN 
+4 0 40 0              %  PT-13    UKRAINE 
+4 0 36 0              %  PT-13    CENTRAL_ASIA 
+1 0 79 0              %  PT-13    FRANCE 
+0 0 111 1              %  PT-13    WEST_AFRICA 
+0 0 68 0              %  PT-13    CENTRAL_AFRICA 
+0 8 124 0              %  PT-13    KOREA 
+14 0 66 0              %  PT-13    TAIWAN 
+0 0 72 8              %  PT-13    VIETNAM 
+4 0 88 8              %  PT-13    AUSTRALIA 
+
+2
+80 0                  %  PT-15A    OTTAWA 
+160 0                  %  PT-15A    HAMILTON 
+111 9                  %  PT-15A    MASSACHUSETTS 
+120 0                  %  PT-15A    TEXAS 
+36 0                  %  PT-15A    ARGENTINA 
+40 0                  %  PT-15A    SWEDEN 
+44 0                  %  PT-15A    UKRAINE 
+40 0                  %  PT-15A    CENTRAL_ASIA 
+80 0                  %  PT-15A    FRANCE 
+111 1                  %  PT-15A    WEST_AFRICA 
+68 0                  %  PT-15A    CENTRAL_AFRICA 
+132 0                  %  PT-15A    KOREA 
+80 0                  %  PT-15A    TAIWAN 
+80 0                  %  PT-15A    VIETNAM 
+100 0                  %  PT-15A    AUSTRALIA 
+
+2
+64 16                  %  PT-26    OTTAWA 
+140 20                  %  PT-26    HAMILTON 
+108 12                  %  PT-26    MASSACHUSETTS 
+99 21                  %  PT-26    TEXAS 
+0 0                  %  PT-26    ARGENTINA 
+0 0                  %  PT-26    SWEDEN 
+0 0                  %  PT-26    UKRAINE 
+0 0                  %  PT-26    CENTRAL_ASIA 
+62 18                  %  PT-26    FRANCE 
+0 112                  %  PT-26    WEST_AFRICA 
+0 0                  %  PT-26    CENTRAL_AFRICA 
+0 0                  %  PT-26    KOREA 
+72 8                  %  PT-26    TAIWAN 
+80 0                  %  PT-26    VIETNAM 
+92 8                  %  PT-26    AUSTRALIA 
+
+2
+56 24                  %  PT-37    OTTAWA 
+85 75                  %  PT-37    HAMILTON 
+87 33                  %  PT-37    MASSACHUSETTS 
+99 21                  %  PT-37    TEXAS 
+0 0                  %  PT-37    ARGENTINA 
+0 0                  %  PT-37    SWEDEN 
+0 0                  %  PT-37    UKRAINE 
+0 0                  %  PT-37    CENTRAL_ASIA 
+32 48                  %  PT-37    FRANCE 
+112 0                  %  PT-37    WEST_AFRICA 
+0 0                  %  PT-37    CENTRAL_AFRICA 
+0 0                  %  PT-37    KOREA 
+16 64                  %  PT-37    TAIWAN 
+24 56                  %  PT-37    VIETNAM 
+58 42                  %  PT-37    AUSTRALIA 

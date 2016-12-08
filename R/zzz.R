@@ -1,0 +1,1 @@
+loadModule("BayesFst", TRUE)

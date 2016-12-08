@@ -1,0 +1,4 @@
+useDynLib(rbayesfst)
+export(mytest)
+export(readData)
+import(Rcpp,methods)
