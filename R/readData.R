@@ -32,14 +32,14 @@ readData = function(fileName){
     numAlleles[loc] = as.numeric(locusLines[1])
     locusLines = locusLines[-1]
     dbCounts[[loc]] = matrix(0, nrow = nPops, ncol = numAlleles[loc])
-
+    
     for(pop in 1:nPops){
       line = locusLines[pop]
       splitLine = unlist(strsplit(line, "%"))
       counts = as.numeric(unlist(strsplit(gsub('[[:space:]]+', ',',  splitLine[1]), ',')))
       dbCounts[[loc]][pop, ] = counts
 
-      locusPopDetails = unlist(strsplit(gsub("^[[:space:]]+([A-Z0-9\\-]+)[[:space:]]+([A-Z_]+)[[:space:]]*$", "\\1,\\2", splitLine[2]), ","))
+      locusPopDetails = unlist(strsplit(gsub("^[[:space:]]+([a-zA-Z0-9\\-]+)[[:space:]]+([A-Z_]+)[[:space:]]*$", "\\1,\\2", splitLine[2]), ","))
 
       if(pop == 1){
         Loci[loc] = locusPopDetails[1]

@@ -5,3 +5,14 @@
 
 using namespace Rcpp;
 
+// CalcFst
+NumericMatrix CalcFst(List results);
+RcppExport SEXP rbayesfst_CalcFst(SEXP resultsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< List >::type results(resultsSEXP);
+    rcpp_result_gen = Rcpp::wrap(CalcFst(results));
+    return rcpp_result_gen;
+END_RCPP
+}

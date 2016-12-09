@@ -57,6 +57,9 @@ private:
     normal_distribution<double> m_rngZ;
     uniform_real_distribution<double> m_rngU;
     
+    // for the Wichman-Hill RNG - need for debugging but will go eventually
+    long ix, iy, iz;
+    
     // internal variables
     
     vector<double> alpha, beta, gamma;
@@ -80,7 +83,7 @@ private:
         m_dMeanFst = 0;
         
         for(int i = 0; i < m_nNumOut; i++){
-            m_vdFst[i] =  calcFst(rnorm(mu, sigma));
+            m_vdFst[i] =  calcFst(Rnorm(mu, sigma));
             m_dMeanFst += m_vdFst[i];
         }
         
@@ -112,12 +115,18 @@ private:
         m_rngZ = normal_distribution<double>(0.0, 1.0);
     }
     
+    void initWichHill(long x, long y, long z){
+      ix = x;
+      iy = y;
+      iz = z;
+    }
+    
     void initHyperparams(){
         alpha.resize(m_nLoci);
         
-        alpha[0] = rnorm(alphaMu, alphaSigma);
+        alpha[0] = Rnorm(alphaMu, alphaSigma);
         for(int i = 1; i < m_nLoci; i++)
-            alpha[i] = (cor * alpha[i-1]) + rnorm() * srk * alphaSigma;
+            alpha[i] = Rnorm(cor * alpha[i-1], srk * alphaSigma);
         
         beta.resize(m_nPops);
         
@@ -125,11 +134,11 @@ private:
             gamma.resize(m_nPops * m_nLoci);
         
         for(int j = 0; j < m_nPops; j++){
-            beta[j] = rnorm(betaMu, betaSigma);
+            beta[j] = Rnorm(betaMu, betaSigma);
             
             if(m_bGammaSwitch){
                 for(int i = 0; i < m_nLoci; i++){
-                    gamma[i * m_nPops + j] = rnorm(gammaMu, gammaSigma);
+                    gamma[i * m_nPops + j] = Rnorm(gammaMu, gammaSigma);
                 }
             }
         }
@@ -170,17 +179,16 @@ private:
         return -0.5 * std::pow((lx - mu) / si, 2);
     }
     
-    double logDirichlet(int k, vector<double>& par, vector<double> vec){
+    double logDirichlet(const vector<double>& par, const vector<double>& vec){
         double sum;
         double konst;
         
         sum = 0.0;
-        konst = 0.0;
+        konst = std::accumulate(par.begin(), par.end(), 0.0);
         
-        for(int j = 0; j < k; j++){
+        for(int j = 0; j < par.size(); j++){
             sum += (par[j] - 1.0) * std::log(vec[j]);
             sum -= std::lgamma(par[j]);
-            konst += par[j];
         }
         return sum + std::lgamma(konst);
     }
@@ -203,12 +211,14 @@ private:
         return t1;
     }
     
-    void pargen(int i, const vector<double>& oldpi){
+    vector<double> pargen(const vector<double>& oldpi){
         vector<double> fpar, rpar, tvec;
         int k;
         double cum = 0.0;
-        int nA = m_numAlleles[i];
+        int nA = oldpi.size();
+        vector<double> newpi;
         
+        newpi.resize(nA);
         fpar.resize(nA);
         rpar.resize(nA);
         tvec.resize(nA);
@@ -221,19 +231,19 @@ private:
             }
             
             fpar[k] =  pSigma * tvec[k];
-            pi[i][k] = rgamma(fpar[k], 1.0)[0]; // rgamma is from Rcpp so it is vectorized
+            newpi[k] = rgamma(fpar[k], 1.0)[0]; // rgamma is from Rcpp so it is vectorized
             
-            if(pi[i][k] == 0.0){
+            if(newpi[k] == 0.0){
                 bIllegal = 1;
-                return;
+                return newpi;
             }
             
-            cum += pi[i][k];
+            cum += newpi[k];
         }
         
         for(k = 0; k < nA; k++){
-            pi[i][k] /= cum;
-            tvec[k] = pi[i][k];
+            newpi[k] /= cum;
+            tvec[k] = newpi[k];
             
             if(tvec[k] < 1.0e-3){
                 tvec[k] = 1.0e-3;
@@ -242,8 +252,10 @@ private:
         }
         
         /* forward and reverse  log-Hastings terms */
-        ftp = logDirichlet(nA, fpar, pi[i]);
-        rtp = logDirichlet(nA, rpar, oldpi);
+        ftp = logDirichlet(fpar, newpi);
+        rtp = logDirichlet(rpar, oldpi);
+        
+        return newpi;
     }
     
     void printHyperparams(void){
@@ -261,14 +273,6 @@ private:
           Rprintf("\n");
         }
       }
-      
-      for(int i = 0; i < m_nLoci; i++){
-        for(int k = 0; k < m_numAlleles[i]; k++){
-          Rprintf("%6.3f", pi[i][k]);
-        }
-        Rprintf("\n");
-      }
-      Rprintf("\n");
     }
     
     
@@ -281,12 +285,40 @@ private:
         return m_vdFst[k] + fmod(idx, 1.0) * (m_vdFst[k + 1] - m_vdFst[k]);
     }
     
+    double WichHill(){
+      // Wichmann & Hill random number generator (Algorithm AS183 in Applied
+      // Statistics 31 (1982)) 
+      //
+      
+      ix = (171 * ix) % 30269;
+      iy = (172 * iy) % 30307;
+      iz = (170 * iz) % 30323;
+      return fmod((ix / 30269.0) + (iy / 30307.0) + (iz / 30323.0), 1.0);
+    }
+    
+    
     double runif(void){
         return m_rngU(m_mtEngine);
     }
     
     double rnorm(double mu = 0, double sigma = 1){
         return sigma * m_rngZ(m_mtEngine) + mu;
+    }
+    
+    // for debugging - eventually will be removed
+    double Rnorm(double mu = 0, double sigma = 1){
+      /* Algorithm 3.6 (Polar) in Ripley (1987) for simulating normal RVs */
+      
+      double u1, u2, w;
+      
+      do{
+        u1 = 2 * WichHill() - 1;
+        u2 = 2 * WichHill() - 1;
+        w = u1 * u1 + u2 * u2;
+      }while(w <= 0 || w >= 1);
+      
+      double z = u1 * std::sqrt(-2 * std::log(w) / w);
+      return sigma * z + mu;
     }
     
     int update_alpha(vector<double>&a, const vector<double>& b, vector<double>& g,
@@ -313,9 +345,9 @@ private:
         for (i = 0; i < m_nLoci; i++){
             vector<double>  oldpi = pi[i];
             
-            pargen(i, oldpi);
-            
-            alphaDash[i] = rnorm(a[i], usa);
+            // choose new p and new alpha
+            pi[i] = pargen(oldpi);
+            alphaDash[i] = Rnorm(a[i], usa);
             
             if(i == 0){
                 lp1[0] = logdnorm(alphaDash[0] , alphaMu , alphaSigma);
@@ -335,7 +367,7 @@ private:
             
             if(m_bGammaSwitch){
                 for (int j = 0; j < m_nPops; j++){
-                    gammaDash[i * m_nPops + j] = rnorm(g[i * m_nPops + j], usg);
+                    gammaDash[i * m_nPops + j] = Rnorm(g[i * m_nPops + j], usg);
                     pg1[i] += logdnorm(gammaDash[i * m_nPops + j], gammaMu, gammaSigma);
                 }
             }
@@ -350,7 +382,8 @@ private:
             
             /* DECIDE WHETHER TO ACCEPT/REJECT CANDIDATE VECTORS */
             
-            double logU = std::log(runif());
+            double logU = std::log(WichHill());
+            Rprintf("%f %f %f %f %f %f %f\n", lpd, lp1[i], pa1[i + 1], lp[i], pa[i + 1], rtp, ftp);
             
             if(!bIllegal && (logU < lp1[i] + pa1[i + 1] - lp[i] - pa[i + 1] + rtp - ftp)){/* ACCEPT */
                 lpd += lp1[i] + pa1[i + 1] - lp[i] - pa[i + 1];
@@ -388,7 +421,7 @@ private:
         double usb = betaSigma * uSigma / std::sqrt(m_nLoci);
         
         for (int j = 0; j < m_nPops; j++)
-            betaDash[j] = rnorm(b[j], usb);
+            betaDash[j] = Rnorm(b[j], usb);
         
         /* EVALUATE LOG-POSTERIOR DENSITY FOR CANDIDATE VECTORS (newz) */
         
@@ -411,9 +444,11 @@ private:
             }
             lpd1 += lp1[i];
         }
+        
+        Rprintf("%f %f\n", lpd, lpd1);
 
         /* DECIDE WHETHER TO ACCEPT/REJECT CANDIDATE VECTORS */
-        double logU = std::log(runif());
+        double logU = std::log(WichHill());
 
         if (!bIllegal && logU < lpd1 - lpd){ // ACCEPT
             lpd = lpd1;
@@ -452,6 +487,8 @@ public:
         // Interaction is switched OFF by default
         m_bGammaSwitch = false;
     }
+  
+    
     
     bool getInteraction(){
         return m_bGammaSwitch;
@@ -468,7 +505,37 @@ public:
         for(int i = 0; i < m_nLoci; i++)
             Rprintf("Locus %d has %d alleles\n", i + 1, m_numAlleles[i]);
     }
+  
+    void printCounts(void){
+      Rprintf("Loc  Pop  Sample size  Allele counts\n");
+      
+      for(int loc = 0; loc < m_nLoci; loc++){
+        for(int pop = 0; pop < m_nPops; pop++){
+          Rprintf("%4d%5d%5d", loc + 1, pop + 1, m_popSums[loc][pop]);
+          for(int a  = 0; a < m_numAlleles[loc]; a++){
+            Rprintf("%8d", m_Counts[loc][pop][a]);
+          }
+          Rprintf("\n");
+        }
+      }
+    }
+  
+  void printInitialPvals(void){
+    Rprintf("****** Initial p values ******\n\n");
     
+    for (int i = 0; i < m_nLoci; i++){
+      Rprintf("Locus %4d", i + 1);
+      for (int k = 0; k < m_numAlleles[i]; k++){ /* LAPLACE VALUE FOR ALLELE FREQS */
+          Rprintf("%7.3f", pi[i][k]);
+      }
+      Rprintf("\n");
+    }
+    
+    Rprintf("\n");
+    
+  }
+  
+  
     void printRunInfo(void){
         Rprintf("****** Settings for MCMC algorithm ******\n\n");
         Rprintf("Burn-in length (iterations): %ld\n", m_nDiscard);
@@ -579,22 +646,24 @@ public:
         }
     }
     
-    List run(unsigned int seed){
-        m_nSeed = seed;
-        init_gen(m_nSeed);
+    List run(unsigned int seed1, unsigned int seed2, unsigned int seed3){
+        m_nSeed = seed1;
+        //init_gen(m_nSeed);
+        initWichHill(seed1, seed2, seed3);
         
         initFst();
         printFstSummary();
         
         /* INITIALISE HYPERPARAMETER VECTORS (a, b) - GENERATE FROM PRIOR */
         initHyperparams();
+        printHyperparams();
         
         // Initialise allele frequencies
         initAlleleFreqs();
-        //printHyperparams();
+        printInitialPvals();
         
         /* INITIALISE LOG-POSTERIOR DENSITY VALUE (z) */
-        
+
         vector<double> lp, pa, pg;
         lp.resize(m_nLoci);
         pa.resize(m_nLoci + 1);
@@ -603,88 +672,124 @@ public:
             pg.resize(m_nLoci);
 
         double logPosteriorDensity = initLogPostDens(alpha, beta, gamma, lp, pa);
+        Rprintf("%f\n", logPosteriorDensity);
 
 
         /* RUN METROPOLIS ALGORITHM (for numit+discard iterations) */
 
         int jmp1 = 0;
         int jmp2 = 0;
-        
+
         NumericMatrix postAlpha(m_nNumOut, m_nLoci);
         NumericMatrix postBeta(m_nNumOut, m_nPops);
         NumericMatrix postGamma(m_nNumOut, m_nLoci * m_nPops);
         NumericVector lpd(m_nNumOut);
-        
+
         int sumAlleles = std::accumulate(m_numAlleles.begin(), m_numAlleles.end(), 0.0);
         NumericMatrix postP(m_nNumOut, sumAlleles);
         
-        int ctr = 0;
-        Progress p1(m_nDiscard, true);
-         
-        for (int nCurrentIteration = -m_nDiscard; nCurrentIteration < m_nNumIt; nCurrentIteration++){
-            bIllegal = false;
-            
-            jmp1 += update_beta(alpha, beta, gamma, logPosteriorDensity, lp, pa);
-            jmp2 += update_alpha(alpha, beta, gamma, logPosteriorDensity, lp, pa, pg);
-            
-            if(nCurrentIteration < 0)
-              p1.increment();
-        
-            if(nCurrentIteration > 0){
-                if ((nCurrentIteration / m_nKeep) * m_nKeep == nCurrentIteration){
-                    lpd[ctr] = logPosteriorDensity;
-                    postAlpha(ctr, _) = NumericVector(alpha.begin(), alpha.end());
-                    postBeta(ctr, _) = NumericVector(beta.begin(), beta.end());
-                    
-                    if(m_bGammaSwitch){
-                      postGamma(ctr, _) = NumericVector(gamma.begin(), gamma.end());
-                    }
-                    
-                    int pos = 0;
-                    for(int loc = 0; loc < m_nLoci; loc++){
-                      for(int a = 0; a < m_numAlleles[loc]; a++){
-                        postP(ctr, pos++) = pi[loc][a];
-                      }
-                    }
-                    
-                    ctr++;
-                }
-                if (((nCurrentIteration + m_nDiscard) > 0) && ((nCurrentIteration+m_nDiscard)/m_nAcceptanceRateGap)*m_nAcceptanceRateGap==(nCurrentIteration+m_nDiscard)){
-                  double percentDone = 100.0 * nCurrentIteration / (double) m_nNumIt; 
-                    Rprintf("Percent: %5.2f Iter: %8d, Accpt. rate: %12.6f%12.6f\n", percentDone, nCurrentIteration, ((double)(jmp1)/m_nAcceptanceRateGap), ((double)(jmp2)/m_nAcceptanceRateGap/m_nLoci));
-                    jmp1=0; jmp2=0;
-                }
-            }
-        }
-        
+        jmp1 += update_beta(alpha, beta, gamma, logPosteriorDensity, lp, pa);
+        jmp2 += update_alpha(alpha, beta, gamma, logPosteriorDensity, lp, pa, pg);
+
+        // int ctr = 0;
+        // Progress p1(m_nDiscard, true);
+        // 
+        // for (int nCurrentIteration = -m_nDiscard; nCurrentIteration < m_nNumIt; nCurrentIteration++){
+        //     bIllegal = false;
+        // 
+        //     jmp1 += update_beta(alpha, beta, gamma, logPosteriorDensity, lp, pa);
+        //     jmp2 += update_alpha(alpha, beta, gamma, logPosteriorDensity, lp, pa, pg);
+        // 
+        //     if(nCurrentIteration < 0)
+        //       p1.increment();
+        // 
+        //     if(nCurrentIteration > 0){
+        //         if ((nCurrentIteration / m_nKeep) * m_nKeep == nCurrentIteration){
+        //             lpd[ctr] = logPosteriorDensity;
+        //             postAlpha(ctr, _) = NumericVector(alpha.begin(), alpha.end());
+        //             postBeta(ctr, _) = NumericVector(beta.begin(), beta.end());
+        // 
+        //             if(m_bGammaSwitch){
+        //               postGamma(ctr, _) = NumericVector(gamma.begin(), gamma.end());
+        //             }
+        // 
+        //             int pos = 0;
+        //             for(int loc = 0; loc < m_nLoci; loc++){
+        //               for(int a = 0; a < m_numAlleles[loc]; a++){
+        //                 postP(ctr, pos++) = pi[loc][a];
+        //               }
+        //             }
+        // 
+        //             ctr++;
+        //         }
+        //     }
+        //     if (((nCurrentIteration + m_nDiscard) > 0) && ((nCurrentIteration+m_nDiscard)/m_nAcceptanceRateGap)*m_nAcceptanceRateGap==(nCurrentIteration+m_nDiscard)){
+        //       double percentDone = 100.0 * nCurrentIteration / (double) m_nNumIt;
+        //         Rprintf("Percent: %5.2f Iter: %8d, Accpt. rate: %12.6f%12.6f\n", percentDone, nCurrentIteration, ((double)(jmp1)/m_nAcceptanceRateGap), ((double)(jmp2)/m_nAcceptanceRateGap/m_nLoci));
+        //         jmp1=0; jmp2=0;
+        //     }
+        // }
+
         List results;
-        
+
         results["lpd"] = lpd;
         results["alpha"] = postAlpha;
         results["beta"] = postBeta;
         results["p"] = postP;
         if(m_bGammaSwitch)
           results["gamma"] = postGamma;
-        
+        results["nout"] = m_nNumOut;
+        results["nloci"] = m_nLoci;
+        results["npop"] = m_nPops;
+        results["interaction"] = m_bGammaSwitch;
+
         return results;
     }
 };
     
     
     
-    RCPP_MODULE(BayesFst) {
-        using namespace Rcpp;
-        
-        class_<BayesFst>( "BayesFst")
-        .default_constructor("Standard constructor")
-        .method("printData", &BayesFst::printData)
-        .method("printFstSummary", &BayesFst::printFstSummary)
-        .method("run", &BayesFst::run)
-        .method("setData", &BayesFst::setData)
-        .method("setPriorParameters", &BayesFst::setPriorParameters)
-        .method("setRunParameters", &BayesFst::setRunParameters)
-        .property("interaction", &BayesFst::getInteraction, &BayesFst::setInteraction)
-        ;
-    }
+RCPP_MODULE(BayesFst) {
+    using namespace Rcpp;
     
+    class_<BayesFst>( "BayesFst")
+    .default_constructor("Standard constructor")
+    .method("printData", &BayesFst::printData)
+    .method("printCounts", &BayesFst::printCounts)
+    .method("printInitialPvals", &BayesFst::printInitialPvals)
+    .method("printFstSummary", &BayesFst::printFstSummary)
+    .method("run", &BayesFst::run)
+    .method("setData", &BayesFst::setData)
+    .method("setPriorParameters", &BayesFst::setPriorParameters)
+    .method("setRunParameters", &BayesFst::setRunParameters)
+    .property("interaction", &BayesFst::getInteraction, &BayesFst::setInteraction)
+    ;
+}
+
+// [[Rcpp::export]]
+NumericMatrix CalcFst(List results){
+  int nout = as<int>(results["nout"]);
+  int nloc = as<int>(results["nloci"]);
+  int npop = as<int>(results["npop"]);
+  bool bInteraction = as<bool>(results["interaction"]);
+  
+  NumericMatrix fst(nout, nloc * npop);
+  NumericMatrix alpha = as<NumericMatrix>(results["alpha"]);
+  NumericMatrix beta = as<NumericMatrix>(results["beta"]);
+  NumericMatrix gamma;
+  
+  if(bInteraction)
+    gamma = as<NumericMatrix>(results["gamma"]);
+  
+  for(int row = 0; row < nout; row++){
+    for(int loc = 0; loc < nloc; loc++){
+      for(int pop = 0; pop < npop; pop++){
+        double w = alpha(row, loc) + beta(row, pop) + (bInteraction ? gamma(row, loc * npop + pop) : 0);
+        fst(row, loc * npop + pop) = std::exp(w) / std::exp(1 + w);
+      }
+    }
+  }
+  
+  return fst;
+}
     

@@ -1,4 +1,5 @@
 useDynLib(rbayesfst)
+export(CalcFst)
 export(mytest)
 export(readData)
 import(Rcpp,methods)
