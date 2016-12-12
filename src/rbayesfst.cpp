@@ -252,8 +252,8 @@ private:
         }
         
         /* forward and reverse  log-Hastings terms */
-        ftp = logDirichlet(fpar, newpi);
-        rtp = logDirichlet(rpar, oldpi);
+        ftp = logDirichlet(newpi, fpar);
+        rtp = logDirichlet(oldpi, rpar);
         
         return newpi;
     }
@@ -383,7 +383,7 @@ private:
             /* DECIDE WHETHER TO ACCEPT/REJECT CANDIDATE VECTORS */
             
             double logU = std::log(WichHill());
-            Rprintf("%f %f %f %f %f %f %f\n", lpd, lp1[i], pa1[i + 1], lp[i], pa[i + 1], rtp, ftp);
+            //Rprintf("%f %f %f %f %f %f %f\n", lpd, lp1[i], pa1[i + 1], lp[i], pa[i + 1], rtp, ftp);
             
             if(!bIllegal && (logU < lp1[i] + pa1[i + 1] - lp[i] - pa[i + 1] + rtp - ftp)){/* ACCEPT */
                 lpd += lp1[i] + pa1[i + 1] - lp[i] - pa[i + 1];
@@ -445,7 +445,7 @@ private:
             lpd1 += lp1[i];
         }
         
-        Rprintf("%f %f\n", lpd, lpd1);
+       // Rprintf("%f %f\n", lpd, lpd1);
 
         /* DECIDE WHETHER TO ACCEPT/REJECT CANDIDATE VECTORS */
         double logU = std::log(WichHill());
@@ -691,44 +691,44 @@ public:
         jmp1 += update_beta(alpha, beta, gamma, logPosteriorDensity, lp, pa);
         jmp2 += update_alpha(alpha, beta, gamma, logPosteriorDensity, lp, pa, pg);
 
-        // int ctr = 0;
-        // Progress p1(m_nDiscard, true);
-        // 
-        // for (int nCurrentIteration = -m_nDiscard; nCurrentIteration < m_nNumIt; nCurrentIteration++){
-        //     bIllegal = false;
-        // 
-        //     jmp1 += update_beta(alpha, beta, gamma, logPosteriorDensity, lp, pa);
-        //     jmp2 += update_alpha(alpha, beta, gamma, logPosteriorDensity, lp, pa, pg);
-        // 
-        //     if(nCurrentIteration < 0)
-        //       p1.increment();
-        // 
-        //     if(nCurrentIteration > 0){
-        //         if ((nCurrentIteration / m_nKeep) * m_nKeep == nCurrentIteration){
-        //             lpd[ctr] = logPosteriorDensity;
-        //             postAlpha(ctr, _) = NumericVector(alpha.begin(), alpha.end());
-        //             postBeta(ctr, _) = NumericVector(beta.begin(), beta.end());
-        // 
-        //             if(m_bGammaSwitch){
-        //               postGamma(ctr, _) = NumericVector(gamma.begin(), gamma.end());
-        //             }
-        // 
-        //             int pos = 0;
-        //             for(int loc = 0; loc < m_nLoci; loc++){
-        //               for(int a = 0; a < m_numAlleles[loc]; a++){
-        //                 postP(ctr, pos++) = pi[loc][a];
-        //               }
-        //             }
-        // 
-        //             ctr++;
-        //         }
-        //     }
-        //     if (((nCurrentIteration + m_nDiscard) > 0) && ((nCurrentIteration+m_nDiscard)/m_nAcceptanceRateGap)*m_nAcceptanceRateGap==(nCurrentIteration+m_nDiscard)){
-        //       double percentDone = 100.0 * nCurrentIteration / (double) m_nNumIt;
-        //         Rprintf("Percent: %5.2f Iter: %8d, Accpt. rate: %12.6f%12.6f\n", percentDone, nCurrentIteration, ((double)(jmp1)/m_nAcceptanceRateGap), ((double)(jmp2)/m_nAcceptanceRateGap/m_nLoci));
-        //         jmp1=0; jmp2=0;
-        //     }
-        // }
+        int ctr = 0;
+        Progress p1(m_nDiscard, true);
+
+        for (int nCurrentIteration = -m_nDiscard; nCurrentIteration < m_nNumIt; nCurrentIteration++){
+            bIllegal = false;
+
+            jmp1 += update_beta(alpha, beta, gamma, logPosteriorDensity, lp, pa);
+            jmp2 += update_alpha(alpha, beta, gamma, logPosteriorDensity, lp, pa, pg);
+
+            if(nCurrentIteration < 0)
+              p1.increment();
+
+            if(nCurrentIteration > 0){
+                if ((nCurrentIteration / m_nKeep) * m_nKeep == nCurrentIteration){
+                    lpd[ctr] = logPosteriorDensity;
+                    postAlpha(ctr, _) = NumericVector(alpha.begin(), alpha.end());
+                    postBeta(ctr, _) = NumericVector(beta.begin(), beta.end());
+
+                    if(m_bGammaSwitch){
+                      postGamma(ctr, _) = NumericVector(gamma.begin(), gamma.end());
+                    }
+
+                    int pos = 0;
+                    for(int loc = 0; loc < m_nLoci; loc++){
+                      for(int a = 0; a < m_numAlleles[loc]; a++){
+                        postP(ctr, pos++) = pi[loc][a];
+                      }
+                    }
+
+                    ctr++;
+                }
+            }
+            if (((nCurrentIteration + m_nDiscard) > 0) && ((nCurrentIteration+m_nDiscard)/m_nAcceptanceRateGap)*m_nAcceptanceRateGap==(nCurrentIteration+m_nDiscard)){
+              double percentDone = 100.0 * nCurrentIteration / (double) m_nNumIt;
+                Rprintf("Percent: %5.2f Iter: %8d, Accpt. rate: %12.6f%12.6f\n", percentDone, nCurrentIteration, ((double)(jmp1)/m_nAcceptanceRateGap), ((double)(jmp2)/m_nAcceptanceRateGap/m_nLoci));
+                jmp1=0; jmp2=0;
+            }
+        }
 
         List results;
 
@@ -745,6 +745,10 @@ public:
 
         return results;
     }
+  
+  double ldiriTest(NumericVector par, NumericVector vec){
+    return logDirichlet(as< vector<double> >(par), as< vector<double> >(vec));
+  }
 };
     
     
@@ -762,6 +766,7 @@ RCPP_MODULE(BayesFst) {
     .method("setData", &BayesFst::setData)
     .method("setPriorParameters", &BayesFst::setPriorParameters)
     .method("setRunParameters", &BayesFst::setRunParameters)
+    .method("ldiriTest", &BayesFst::ldiriTest)
     .property("interaction", &BayesFst::getInteraction, &BayesFst::setInteraction)
     ;
 }
