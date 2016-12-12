@@ -83,7 +83,7 @@ private:
         m_dMeanFst = 0;
         
         for(int i = 0; i < m_nNumOut; i++){
-            m_vdFst[i] =  calcFst(Rnorm(mu, sigma));
+            m_vdFst[i] =  calcFst(rnorm(mu, sigma));
             m_dMeanFst += m_vdFst[i];
         }
         
@@ -124,9 +124,9 @@ private:
     void initHyperparams(){
         alpha.resize(m_nLoci);
         
-        alpha[0] = Rnorm(alphaMu, alphaSigma);
+        alpha[0] = rnorm(alphaMu, alphaSigma);
         for(int i = 1; i < m_nLoci; i++)
-            alpha[i] = Rnorm(cor * alpha[i-1], srk * alphaSigma);
+            alpha[i] = rnorm(cor * alpha[i-1], srk * alphaSigma);
         
         beta.resize(m_nPops);
         
@@ -134,11 +134,11 @@ private:
             gamma.resize(m_nPops * m_nLoci);
         
         for(int j = 0; j < m_nPops; j++){
-            beta[j] = Rnorm(betaMu, betaSigma);
+            beta[j] = rnorm(betaMu, betaSigma);
             
             if(m_bGammaSwitch){
                 for(int i = 0; i < m_nLoci; i++){
-                    gamma[i * m_nPops + j] = Rnorm(gammaMu, gammaSigma);
+                    gamma[i * m_nPops + j] = rnorm(gammaMu, gammaSigma);
                 }
             }
         }
@@ -188,8 +188,11 @@ private:
         
         for(int j = 0; j < par.size(); j++){
             sum += (par[j] - 1.0) * std::log(vec[j]);
+            //if(debug) Rprintf("j = %d, sum = %f, par[j] = %f, vec[j] = %f\n", j, sum, par[j], vec[j]);
             sum -= std::lgamma(par[j]);
+            //if(debug) Rprintf("%f\n", sum);
         }
+        //if(debug) Rprintf("%f %f %f\n", sum, konst, sum + lgamma(konst));
         return sum + std::lgamma(konst);
     }
     
@@ -252,8 +255,8 @@ private:
         }
         
         /* forward and reverse  log-Hastings terms */
-        ftp = logDirichlet(newpi, fpar);
-        rtp = logDirichlet(oldpi, rpar);
+        ftp = logDirichlet(fpar, newpi);
+        rtp = logDirichlet(rpar, oldpi);
         
         return newpi;
     }
@@ -347,7 +350,7 @@ private:
             
             // choose new p and new alpha
             pi[i] = pargen(oldpi);
-            alphaDash[i] = Rnorm(a[i], usa);
+            alphaDash[i] = rnorm(a[i], usa);
             
             if(i == 0){
                 lp1[0] = logdnorm(alphaDash[0] , alphaMu , alphaSigma);
@@ -367,7 +370,7 @@ private:
             
             if(m_bGammaSwitch){
                 for (int j = 0; j < m_nPops; j++){
-                    gammaDash[i * m_nPops + j] = Rnorm(g[i * m_nPops + j], usg);
+                    gammaDash[i * m_nPops + j] = rnorm(g[i * m_nPops + j], usg);
                     pg1[i] += logdnorm(gammaDash[i * m_nPops + j], gammaMu, gammaSigma);
                 }
             }
@@ -382,8 +385,8 @@ private:
             
             /* DECIDE WHETHER TO ACCEPT/REJECT CANDIDATE VECTORS */
             
-            double logU = std::log(WichHill());
-            //Rprintf("%f %f %f %f %f %f %f\n", lpd, lp1[i], pa1[i + 1], lp[i], pa[i + 1], rtp, ftp);
+            double logU = std::log(runif());
+           // Rprintf("%f %f %f %f %f %f %f\n", lpd, lp1[i], pa1[i + 1], lp[i], pa[i + 1], rtp, ftp);
             
             if(!bIllegal && (logU < lp1[i] + pa1[i + 1] - lp[i] - pa[i + 1] + rtp - ftp)){/* ACCEPT */
                 lpd += lp1[i] + pa1[i + 1] - lp[i] - pa[i + 1];
@@ -421,7 +424,7 @@ private:
         double usb = betaSigma * uSigma / std::sqrt(m_nLoci);
         
         for (int j = 0; j < m_nPops; j++)
-            betaDash[j] = Rnorm(b[j], usb);
+            betaDash[j] = rnorm(b[j], usb);
         
         /* EVALUATE LOG-POSTERIOR DENSITY FOR CANDIDATE VECTORS (newz) */
         
@@ -448,7 +451,7 @@ private:
        // Rprintf("%f %f\n", lpd, lpd1);
 
         /* DECIDE WHETHER TO ACCEPT/REJECT CANDIDATE VECTORS */
-        double logU = std::log(WichHill());
+        double logU = std::log(runif());
 
         if (!bIllegal && logU < lpd1 - lpd){ // ACCEPT
             lpd = lpd1;
@@ -648,8 +651,8 @@ public:
     
     List run(unsigned int seed1, unsigned int seed2, unsigned int seed3){
         m_nSeed = seed1;
-        //init_gen(m_nSeed);
-        initWichHill(seed1, seed2, seed3);
+        init_gen(m_nSeed);
+        //initWichHill(seed1, seed2, seed3);
         
         initFst();
         printFstSummary();
