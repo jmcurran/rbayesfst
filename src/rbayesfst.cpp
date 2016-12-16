@@ -2,7 +2,7 @@
 #include <ctime>
 #include <random>
 #include <Rcpp.h>
-#include <gperftools/profiler.h>
+//#include <gperftools/profiler.h> // only needed for profiling
 
 // [[Rcpp::depends(RcppProgress)]]
 #include <progress.hpp>
@@ -71,6 +71,7 @@ private:
     vector<double> m_vdFst;
     vector<int> m_vnNumZeros;
     double m_dMeanFst;
+    double usa, usb, usg;
 
     double calcFst(double w){
         /* calculate Fst(loc_i , pop_j) from hyperparameters a_i, b_j and g_ij */
@@ -344,9 +345,6 @@ private:
             fill(pg1.begin(), pg1.end(), 0);
         }
         
-        double usa = alphaSigma * uSigma;
-        double usg = gammaSigma * uSigma;
-        
         for (i = 0; i < m_nLoci; i++){
             vector<double>  oldpi(pi[i]);
             
@@ -423,7 +421,7 @@ private:
         vector<double> betaDash;
         betaDash.resize(b.size());
         
-        double usb = betaSigma * uSigma / std::sqrt(m_nLoci);
+        
         
         for (int j = 0; j < m_nPops; j++)
             betaDash[j] = rnorm(b[j], usb);
@@ -479,6 +477,11 @@ public:
         
         uSigma = 0.5;     /* scale param for normal updates */
         pSigma = 1000;     /* scale param for Dirichlet updates of p_ij */
+        
+        //
+        usa = alphaSigma * uSigma;
+        usb = betaSigma * uSigma / std::sqrt(m_nLoci);
+        usg = gammaSigma * uSigma;
         
         /* CORRELATION PARAMETER (FIXED) BETWEEN ADJACENT MARKERS */
         
@@ -579,15 +582,24 @@ public:
         betaSigma = betaPrior[1];
         gammaMu = gammaPrior[0];
         gammaSigma = gammaPrior[1];
+        
         this->uSigma = uSigma;
         this->pSigma = pSigma;
+        
         cor = shrink;
         srk = std::sqrt(1 - cor * cor);
+        
+        usa = alphaSigma * uSigma;
+        usb = betaSigma * uSigma / std::sqrt(m_nLoci);
+        usg = gammaSigma * uSigma;
     }
     
     void setData(List data){
         m_nPops = data["nPops"];
         m_nLoci = data["nLoci"];
+        
+        usb = betaSigma * uSigma / std::sqrt(m_nLoci);
+        
         m_numAlleles = as<vector<int> >(data["numAlleles"]);
         
         NumericMatrix popSums = as<NumericMatrix>(data["locusPopSums"]);
@@ -677,7 +689,7 @@ public:
             pg.resize(m_nLoci);
 
         double logPosteriorDensity = initLogPostDens(alpha, beta, gamma, lp, pa);
-        Rprintf("%f\n", logPosteriorDensity);
+        //Rprintf("%f\n", logPosteriorDensity);
 
 
         /* RUN METROPOLIS ALGORITHM (for numit+discard iterations) */
@@ -693,8 +705,8 @@ public:
         int sumAlleles = std::accumulate(m_numAlleles.begin(), m_numAlleles.end(), 0.0);
         NumericMatrix postP(m_nNumOut, sumAlleles);
         
-        clock_t begin = clock();
-        ProfilerStart("/Users/jcur002/Dropbox/Code/git/rbayesfst.log");
+        //clock_t begin = clock();
+        //ProfilerStart("/Users/jcur002/Dropbox/Code/git/rbayesfst.log"); Only needed for profiling
         
         int ctr = 0;
         Progress p1(m_nDiscard, true);
@@ -730,15 +742,18 @@ public:
             }
             if (((nCurrentIteration + m_nDiscard) > 0) && ((nCurrentIteration+m_nDiscard)/m_nAcceptanceRateGap)*m_nAcceptanceRateGap==(nCurrentIteration+m_nDiscard)){
               double percentDone = 100.0 * nCurrentIteration / (double) m_nNumIt;
+              
+              if(percentDone > 0)
                 Rprintf("Percent: %5.2f Iter: %8d, Accpt. rate: %12.6f%12.6f\n", percentDone, nCurrentIteration, ((double)(jmp1)/m_nAcceptanceRateGap), ((double)(jmp2)/m_nAcceptanceRateGap/m_nLoci));
+              
                 jmp1=0; jmp2=0;
             }
         }
-        ProfilerStop();
+        /*ProfilerStop();
         
         clock_t end = clock();
         double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-        Rprintf("%f seconds elapsed\n", elapsed_secs);
+        Rprintf("%f seconds elapsed\n", elapsed_secs);*/  // only needed for profiling
 
         List results;
 
