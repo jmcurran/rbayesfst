@@ -1,6 +1,8 @@
 #include <algorithm>
+#include <ctime>
 #include <random>
 #include <Rcpp.h>
+#include <gperftools/profiler.h>
 
 // [[Rcpp::depends(RcppProgress)]]
 #include <progress.hpp>
@@ -221,20 +223,20 @@ private:
         int nA = oldpi.size();
         vector<double> newpi;
         
-        newpi.resize(nA);
-        fpar.resize(nA);
-        rpar.resize(nA);
-        tvec.resize(nA);
+        newpi.reserve(nA);
+        fpar.reserve(nA);
+        rpar.reserve(nA);
+        tvec.reserve(nA);
         
         for(k = 0; k < nA; k++){
-            tvec[k] = oldpi[k];
+            tvec.push_back(oldpi[k]);
             
             if(tvec[k] < 1.0e-3){
                 tvec[k] = 1.0e-3;
             }
             
-            fpar[k] =  pSigma * tvec[k];
-            newpi[k] = rgamma(fpar[k], 1.0)[0]; // rgamma is from Rcpp so it is vectorized
+            fpar.push_back(pSigma * tvec[k]);
+            newpi.push_back(::Rf_rgamma(fpar[k], 1.0)); // rgamma is from Rcpp so it is vectorized
             
             if(newpi[k] == 0.0){
                 bIllegal = 1;
@@ -251,7 +253,7 @@ private:
             if(tvec[k] < 1.0e-3){
                 tvec[k] = 1.0e-3;
             }
-            rpar[k] = pSigma * tvec[k];
+            rpar.push_back(pSigma * tvec[k]);
         }
         
         /* forward and reverse  log-Hastings terms */
@@ -346,7 +348,7 @@ private:
         double usg = gammaSigma * uSigma;
         
         for (i = 0; i < m_nLoci; i++){
-            vector<double>  oldpi = pi[i];
+            vector<double>  oldpi(pi[i]);
             
             // choose new p and new alpha
             pi[i] = pargen(oldpi);
@@ -358,13 +360,13 @@ private:
                 pa1[1] = logdnorm(a[1] , cor * alphaDash[0] , srk * alphaSigma);
             }
             else if(i > 0 &&i < m_nLoci - 1){
-                lp1[i]= logdnorm(alphaDash[i] , cor * a[i - 1] , srk * alphaSigma);
-                pa1[i]= logdnorm(alphaDash[i] , cor * a[i - 1] , srk * alphaSigma);
+                lp1[i] = logdnorm(alphaDash[i] , cor * a[i - 1] , srk * alphaSigma);
+                pa1[i] = logdnorm(alphaDash[i] , cor * a[i - 1] , srk * alphaSigma);
                 pa1[i + 1]= logdnorm(a[i + 1] , cor * alphaDash[i] , srk * alphaSigma);
             }
             else if(i == m_nLoci - 1){
-                lp1[i]= logdnorm(alphaDash[i] , cor * a[i - 1] , srk * alphaSigma);
-                pa1[i]= logdnorm(alphaDash[i] , cor * a[i - 1] , srk * alphaSigma);
+                lp1[i] = logdnorm(alphaDash[i] , cor * a[i - 1] , srk * alphaSigma);
+                pa1[i] = logdnorm(alphaDash[i] , cor * a[i - 1] , srk * alphaSigma);
                 pa1[i + 1] = 0;
             }
             
@@ -691,9 +693,9 @@ public:
         int sumAlleles = std::accumulate(m_numAlleles.begin(), m_numAlleles.end(), 0.0);
         NumericMatrix postP(m_nNumOut, sumAlleles);
         
-        jmp1 += update_beta(alpha, beta, gamma, logPosteriorDensity, lp, pa);
-        jmp2 += update_alpha(alpha, beta, gamma, logPosteriorDensity, lp, pa, pg);
-
+        clock_t begin = clock();
+        ProfilerStart("/Users/jcur002/Dropbox/Code/git/rbayesfst.log");
+        
         int ctr = 0;
         Progress p1(m_nDiscard, true);
 
@@ -732,6 +734,11 @@ public:
                 jmp1=0; jmp2=0;
             }
         }
+        ProfilerStop();
+        
+        clock_t end = clock();
+        double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+        Rprintf("%f seconds elapsed\n", elapsed_secs);
 
         List results;
 

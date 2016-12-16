@@ -1,1 +1,3 @@
+PKG_LIBS= -lprofiler
+CPUPROFILE= /Users/jcur002/Dropbox/Code/git/rbayesfst.log
 PKG_CXXFLAGS= -std=c++14
