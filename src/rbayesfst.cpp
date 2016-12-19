@@ -148,7 +148,7 @@ private:
     }
     
     double initLogPostDens(const vector<double>& a, const vector<double>& b, const vector<double>& g ,
-                           vector<double>& lp, vector<double>& pa){
+                           vector<double>& lp, vector<double>& pa, vector<double>& pg){
         double lpd = 0;
         
         for(int j = 0; j < m_nPops; j++)
@@ -158,15 +158,22 @@ private:
             if(i==0){
                 lp[i] = logdnorm(a[i], alphaMu, alphaSigma);	/* PRIOR FOR a_i */
             }else if(i > 0 && i < m_nLoci){
-                lp[i]= logdnorm(a[i], cor * a[i-1], srk * alphaSigma);
-                pa[i]= lp[i];
+                lp[i] = logdnorm(a[i], cor * a[i-1], srk * alphaSigma);
+                pa[i] = lp[i];
             }
 
             pa[m_nLoci] = 0;
+            
+            if(m_bGammaSwitch){
+              for (int j = 0; j < m_nPops; j++){
+                pg[i] += logdnorm(g[i], gammaMu, gammaSigma);
+              }
+              lp[i] += pg[i];
+            }
 
             for (int j = 0; j < m_nPops; j++){
                 if (m_popSums[i][j] > 0){
-                    lp[i] += logMultinomDirichlet( calcFst(a[i] + b[j]), i, j);   /* LIKELIHOOD */
+                    lp[i] += (m_bGammaSwitch ? logMultinomDirichlet( calcFst(a[i] + b[j] g[i * m_nPops + j]), i, j) : logMultinomDirichlet( calcFst(a[i] + b[j]), i, j));   /* LIKELIHOOD */
                 }
             }
             lpd += lp[i];
@@ -685,10 +692,12 @@ public:
         lp.resize(m_nLoci);
         pa.resize(m_nLoci + 1);
 
-        if(m_bGammaSwitch)
+        if(m_bGammaSwitch){
             pg.resize(m_nLoci);
+            fill(pg.begin(), pg.end(), 0);
+        }
 
-        double logPosteriorDensity = initLogPostDens(alpha, beta, gamma, lp, pa);
+        double logPosteriorDensity = initLogPostDens(alpha, beta, gamma, lp, pa, pg);
         //Rprintf("%f\n", logPosteriorDensity);
 
 
@@ -803,7 +812,7 @@ NumericMatrix CalcFst(List results){
   int npop = as<int>(results["npop"]);
   bool bInteraction = as<bool>(results["interaction"]);
   
-  NumericMatrix fst(nout, nloc * npop);
+  NumericMatrix fst(nout - 1, nloc * npop);
   NumericMatrix alpha = as<NumericMatrix>(results["alpha"]);
   NumericMatrix beta = as<NumericMatrix>(results["beta"]);
   NumericMatrix gamma;
@@ -811,11 +820,11 @@ NumericMatrix CalcFst(List results){
   if(bInteraction)
     gamma = as<NumericMatrix>(results["gamma"]);
   
-  for(int row = 0; row < nout; row++){
+  for(int row = 0; row < nout - 1; row++){
     for(int loc = 0; loc < nloc; loc++){
       for(int pop = 0; pop < npop; pop++){
         double w = alpha(row, loc) + beta(row, pop) + (bInteraction ? gamma(row, loc * npop + pop) : 0);
-        fst(row, loc * npop + pop) = std::exp(w) / std::exp(1 + w);
+        fst(row, loc * npop + pop) = std::exp(w) / (1 + std::exp(w));
       }
     }
   }
