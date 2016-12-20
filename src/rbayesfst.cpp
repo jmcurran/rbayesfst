@@ -173,7 +173,7 @@ private:
 
             for (int j = 0; j < m_nPops; j++){
                 if (m_popSums[i][j] > 0){
-                    lp[i] += (m_bGammaSwitch ? logMultinomDirichlet( calcFst(a[i] + b[j] g[i * m_nPops + j]), i, j) : logMultinomDirichlet( calcFst(a[i] + b[j]), i, j));   /* LIKELIHOOD */
+                    lp[i] += (m_bGammaSwitch ? logMultinomDirichlet( calcFst(a[i] + b[j] + g[i * m_nPops + j]), i, j) : logMultinomDirichlet( calcFst(a[i] + b[j]), i, j));   /* LIKELIHOOD */
                 }
             }
             lpd += lp[i];
