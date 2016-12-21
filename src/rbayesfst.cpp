@@ -670,11 +670,15 @@ public:
         }
     }
     
-    List run(unsigned int seed1, unsigned int seed2, unsigned int seed3){
-        m_nSeed = seed1;
+    //' @title run
+    //' 
+    //' @param seed A seed for the random number generator
+    //' 
+    //' @returns A list with a number of samples from the posterior distribution.
+    List run(unsigned int seed){
+        m_nSeed = seed;
         init_gen(m_nSeed);
-        //initWichHill(seed1, seed2, seed3);
-        
+
         initFst();
         printFstSummary();
         
@@ -751,6 +755,9 @@ public:
             }
             if (((nCurrentIteration + m_nDiscard) > 0) && ((nCurrentIteration+m_nDiscard)/m_nAcceptanceRateGap)*m_nAcceptanceRateGap==(nCurrentIteration+m_nDiscard)){
               double percentDone = 100.0 * nCurrentIteration / (double) m_nNumIt;
+              
+              // see if the user wants to halt computation
+              Rcpp::checkUserInterrupt();
               
               if(percentDone > 0)
                 Rprintf("Percent: %5.2f Iter: %8d, Accpt. rate: %12.6f%12.6f\n", percentDone, nCurrentIteration, ((double)(jmp1)/m_nAcceptanceRateGap), ((double)(jmp2)/m_nAcceptanceRateGap/m_nLoci));

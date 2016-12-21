@@ -35,23 +35,49 @@
 #' \code{4} \cr
 #' \code{10 10 10 20} \cr
 #' \code{5 5 25 15} \cr
-#' \code{17 19 0 14} \cr
-#  \cr
+#' \code{17 19 0 14} \cr \cr
+#  
 #' Blank lines are used to delimit information for the different loci. White space (space or tab) is used to delimit the numbers on each line.
+#' The locus and population names are extracted from comments on line which start with a \code{\%}, e.g. using the same example as above
+#' 
+#' \code{0} \cr
+#' \code{3} \cr
+#' \code{2} \cr
+#' 
+#' 
+#' \code{2} \cr
+#' \code{45 5 \% Locus1 Pop1}\cr
+#' \code{23 27 \% Locus1 Pop2}\cr
+#' \code{10 40 \% Locus1 Pop3}\cr
+#'  \cr
+#' \code{4} \cr
+#' \code{10 10 10 20 \% Locus2 Pop1}\cr
+#' \code{5 5 25 15 \% Locus2 Pop2}\cr
+#' \code{17 19 0 14 \% Locus2 Pop3}\cr \cr
 #'
-#' @param fileName 
+#' The function also has the ability to read in JSON formatted data. As an absolute minimum it must contain the the counts of each allele at each locus for each population stored in a \code{list} called
+#' \code{dbCounts}. Each element of the list should be a \code{matrix} with the same number of rows, one for each population. The number of columns in each row is equal to the number of alleles for the 
+#' particular locus, and the entries of each row give the count of allele \eqn{i}{i} in population \eqn{j}{j} at locus \eqn{l}{l}.
+#' 
+#' @param fileName A valid file path or URL with the file extension \code{inp} or \code{json}.
 #'
-#' @return a dataset of class \code{bayesFst}. This is essentially a list with the following members: \tabular{ll}{
+#' @return A dataset of class \code{bayesFst}. This is essentially a list with the following members: \tabular{ll}{
 #' \code{dbCounts} \tab A list of matrices providing allele counts at each locus for each population. The items in the list are loci, the rows are populations, and the columns alleles. \cr
 #' \code{nLoci} \tab the number of loci in the dataset. \cr
 #' \code{Loci} \tab the locus names if available. If the locus names are not available they will be labelled Locus 1, Locus 2, \ldots \cr
 #' \code{nPops} \tab the number of populations in the dataset. \cr
 #' \code{Pops} \tab the population names if available. If the population names are not available they will be labelled Pop 1, Pop 2, \ldots \cr
 #' \code{numAlleles} \tab the number of possible alleles at each locus \cr
-#' \code{locusPopSums} \tab a matrix containing the number of alleles observed at the ith locus for the jth population. \cr
-#' \code{gammaSwitch} \tab either \code{TRUE} or \code{FALSE} depending on whether locus and popuation effects interact or not \cr
+#' \code{locusPopSums} \tab a \eqn{n_{loc}\times n_{pop}}{nloc x npop} matrix containing the number of alleles observed at the \eqn{l^{\mathrm{th}}}{lth} locus for the \eqn{j^{\mathrm{th}}}{jth} population. \cr
+#' \code{gammaSwitch} \tab either \code{TRUE} or \code{FALSE} depending on whether locus and popuation effects interact or not.\cr
 #' }
 #' @export
+#' 
+#' @examples 
+#' \dontrun{
+#' bd = readData('http://www.reading.ac.uk/Statistics/genetics/software/bayesfst/data_BB04.inp')}
+#' 
+#' @seealso summary.bayesFstData
 readData = function(fileName){
   if(grepl("^.*inp$", fileName)){
     cat("Reading raw data in .inp format\n")

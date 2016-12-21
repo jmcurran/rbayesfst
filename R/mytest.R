@@ -6,5 +6,5 @@ mytest = function(){
   b$printData()
   b$printCounts()
   b$setRunParameters(2001, 0.2, 0.05, 0.02, TRUE)
-  b$run(25437, 11746, 21291)
+  b$run(25437) #, 11746, 21291)
 }

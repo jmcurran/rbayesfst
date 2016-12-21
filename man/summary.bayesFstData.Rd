@@ -2,7 +2,7 @@
 % Please edit documentation in R/summary.bayesFstData.R
 \name{summary.bayesFstData}
 \alias{summary.bayesFstData}
-\title{An S3 summary method for bayesFstData objects}
+\title{Summary information for \code{bayesFstData} objects}
 \usage{
 \method{summary}{bayesFstData}(x, ...)
 }
@@ -13,5 +13,8 @@
 }
 \description{
 Provides a simple summary of the input data used with this package.
+}
+\seealso{
+readData
 }
 

@@ -3,11 +3,9 @@ Type: Package
 Title: Bayesian Estimation of Fst
 Version: 0.1
 Date: 2016-12-05
-Author: James Curran, David Balding, Mark Beaumont
+Author: James Curran, David Balding, Karen Ayres, Mark Beaumont, Paul O'Reilly
 Maintainer: James Curran <j.curran@auckland.ac.nz>
-Description: An R interface to the BayesFst programme. This is a Metropolis
-    algorithm for estimating F_ST, the correlation of two homologous genes sampled
-    within the same subpopulation, relative to the total population. Among other
+Description: An R interface to the BayesFst programme. This is a Metropolis algorithm for estimating F_ST, the correlation of two homologous genes sampled within the same subpopulation, relative to the total population. Among other
     uses, F_ST is important in calculating forensic match probabilities, as matches
     may be more common between individuals in the same subpopulation (due to recent
     shared ancestry of genes in the DNA profile), see Balding & Nichols (1994,
