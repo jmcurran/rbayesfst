@@ -50,6 +50,7 @@ private:
     IntegerVector m_numAlleles;
     vector< vector <int> > m_popSums;
     vector< vector< vector<int> > > m_Counts;
+    bool m_bDataLoaded;
     
     // input variables which were constants and so may be rarely changed
     int m_nNumOut; // default 2001
@@ -501,6 +502,9 @@ public:
         
         // Interaction is switched OFF by default
         m_bGammaSwitch = false;
+        
+        // Data is not loaded by default
+        m_bDataLoaded = false;
     }
   
     
@@ -580,6 +584,20 @@ public:
         Rprintf("\n");
         
     }
+  
+    List getPriorParameters(void){
+      List l;
+      
+      l["alpha"] = NumericVector::create(alphaMu, alphaSigma);
+      l["beta"] = NumericVector::create(betaMu, betaSigma);
+      l["gamma"] = NumericVector::create(gammaMu, gammaSigma);
+      l["uSigma"] = uSigma;
+      l["pSigma"] = pSigma;
+      l["cor"] = cor;
+      
+      return l;
+      
+    }
     
     void setPriorParameters(NumericVector alphaPrior, NumericVector betaPrior, NumericVector gammaPrior,
                             double uSigma, double pSigma, double shrink){
@@ -642,6 +660,13 @@ public:
                 }
             }
         }
+        
+        m_bDataLoaded = true;
+        Rprintf("Input data successfully initialized\n");
+    }
+  
+    bool isDataLoaded(void){
+      return m_bDataLoaded;
     }
     
     void setRunParameters(int numOut = 21, double keepPpn = 0.2, double discardPpn = 0.05, double acceptPpn = 0.02, bool bPrint = false){
@@ -670,11 +695,6 @@ public:
         }
     }
     
-    //' @title run
-    //' 
-    //' @param seed A seed for the random number generator
-    //' 
-    //' @returns A list with a number of samples from the posterior distribution.
     List run(unsigned int seed){
         m_nSeed = seed;
         init_gen(m_nSeed);
@@ -805,9 +825,11 @@ RCPP_MODULE(BayesFst) {
     .method("printFstSummary", &BayesFst::printFstSummary)
     .method("run", &BayesFst::run)
     .method("setData", &BayesFst::setData)
-    .method("setPriorParameters", &BayesFst::setPriorParameters)
     .method("setRunParameters", &BayesFst::setRunParameters)
     .method("ldiriTest", &BayesFst::ldiriTest)
+    .method("isDataLoaded", &BayesFst::isDataLoaded)
+    .method("getPriorParams", &BayesFst::getPriorParameters)
+    .method("setPriorParams", &BayesFst::setPriorParameters)
     .property("interaction", &BayesFst::getInteraction, &BayesFst::setInteraction)
     ;
 }

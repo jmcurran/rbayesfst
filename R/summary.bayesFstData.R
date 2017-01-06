@@ -8,6 +8,7 @@
 #' @export
 #' @seealso readData
 summary.bayesFstData = function(x, ...){
+  cat(sprintf("This data is loaded from the file: \n%s\n\n", x$name))
   cat(sprintf("This dataset contains %d populations and %d loci\n", x$nPops, x$nLoci))
   cat("The populations in this dataset are:\n")
   print(x$Pops)

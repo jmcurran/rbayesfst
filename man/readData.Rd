@@ -19,6 +19,7 @@ A dataset of class \code{bayesFst}. This is essentially a list with the followin
 \code{numAlleles} \tab the number of possible alleles at each locus \cr
 \code{locusPopSums} \tab a \eqn{n_{loc}\times n_{pop}}{nloc x npop} matrix containing the number of alleles observed at the \eqn{l^{\mathrm{th}}}{lth} locus for the \eqn{j^{\mathrm{th}}}{jth} population. \cr
 \code{gammaSwitch} \tab either \code{TRUE} or \code{FALSE} depending on whether locus and popuation effects interact or not.\cr
+\code{name} \tab the fully qualified file name of the data set. Note that if an .inp file has been saved into JSON format, then the name of the JSON file is the name, not the original data.\cr
 }
 }
 \description{
@@ -82,8 +83,17 @@ The function also has the ability to read in JSON formatted data. As an absolute
 particular locus, and the entries of each row give the count of allele \eqn{i}{i} in population \eqn{j}{j} at locus \eqn{l}{l}.
 }
 \examples{
+## Example using the data provided by Balding from the web. 
 \dontrun{
 bd = readData('http://www.reading.ac.uk/Statistics/genetics/software/bayesfst/data_BB04.inp')}
+
+## Example using the Balding provided example, but from this pacakge
+bd = readData(system.file("extdata", "data_BB04.inp", package = "rbayesfst"))
+
+## Example using the Balding provided example but saved in JSON format 
+## from this package.
+bd = readData(system.file("extdata", "data_BB04.json", package = "rbayesfst"))
+summary(bd)
 
 }
 \seealso{

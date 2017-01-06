@@ -1,5 +1,5 @@
 mytest = function(){
-  d = readData("/Users/jcur002/Dropbox/Code/git/rbayesfst/data/data_BB04.inp")
+  d = readData(system.file("extdata", "data_BB04.inp", packge = "rbayesfst"))
   b = new(BayesFst)
   b$setData(d)
   b$interaction = FALSE
