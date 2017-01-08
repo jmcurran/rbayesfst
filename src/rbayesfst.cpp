@@ -505,6 +505,11 @@ public:
         
         // Data is not loaded by default
         m_bDataLoaded = false;
+        
+        // Set the number of iteration to -1, so that the system can detect
+        // whether the user has changed this (to something sensible)
+        m_nNumIt = -1;
+        
     }
   
     
@@ -556,15 +561,16 @@ public:
   
   
     void printRunInfo(void){
-        Rprintf("****** Settings for MCMC algorithm ******\n\n");
+      Rprintf("****** Settings for MCMC algorithm ******\n\n");
+      
+      if(m_nNumIt > 0){
         Rprintf("Burn-in length (iterations): %ld\n", m_nDiscard);
         Rprintf("Thinning interval: %ld\n", m_nKeep);
         Rprintf("Number of iterations (post burn-in): %ld\n" , m_nNumIt);
         Rprintf("Number of outputs: %ld\n", m_nNumOut);
-        
-        Rprintf("Using Normal prior for hyperparameters a_i with mean %.2f, sd %.2f\n", alphaMu, alphaSigma);
-        Rprintf("Using Normal prior for hyperparameters b_j with mean %.2f, sd %.2f\n", betaMu, betaSigma);
-        
+      }else{
+        Rprintf("Run parameters have not been set yet\n");
+      }
     }
     
     void printFstSummary(){
@@ -685,12 +691,12 @@ public:
             Rprintf("Number of iterations (post burn-in): %ld\n", m_nNumIt);
             Rprintf("Number of outputs: %ld\n", m_nNumOut);
             
-            Rprintf("Using Normal prior for hyperparameters a_i with mean %.2f, sd %.2f\n",alphaMu,alphaSigma);
-            Rprintf("Using Normal prior for hyperparameters b_j with mean %.2f, sd %.2f\n",betaMu,betaSigma);
+            Rprintf("Using Normal prior for hyperparameters alpha_i with mean %.2f, sd %.2f\n",alphaMu,alphaSigma);
+            Rprintf("Using Normal prior for hyperparameters beta_j with mean %.2f, sd %.2f\n",betaMu,betaSigma);
             
             if (m_bGammaSwitch){
                 Rprintf("Using interaction terms in model\n");
-                Rprintf("Using Normal prior for hyperparameters g_ij with mean %.2f, sd %.2f\n\n",gammaMu,gammaSigma);
+                Rprintf("Using Normal prior for hyperparameters gamma_ij with mean %.2f, sd %.2f\n\n",gammaMu,gammaSigma);
             }
         }
     }
@@ -744,7 +750,7 @@ public:
         int ctr = 0;
         Progress p1(m_nDiscard, true);
 
-        for (int nCurrentIteration = -m_nDiscard; nCurrentIteration < m_nNumIt; nCurrentIteration++){
+        for (int nCurrentIteration = -m_nDiscard; nCurrentIteration <= m_nNumIt; nCurrentIteration++){
             bIllegal = false;
 
             jmp1 += update_beta(alpha, beta, gamma, logPosteriorDensity, lp, pa);
@@ -810,6 +816,14 @@ public:
   double ldiriTest(NumericVector par, NumericVector vec){
     return logDirichlet(as< vector<double> >(par), as< vector<double> >(vec));
   }
+  
+  int getNumIterations(void){
+    return m_nNumIt;
+  }
+  
+  long getThin(void){
+    return m_nKeep;
+  }
 };
     
     
@@ -823,6 +837,7 @@ RCPP_MODULE(BayesFst) {
     .method("printCounts", &BayesFst::printCounts)
     .method("printInitialPvals", &BayesFst::printInitialPvals)
     .method("printFstSummary", &BayesFst::printFstSummary)
+    .method("printRunInfo", &BayesFst::printRunInfo)
     .method("run", &BayesFst::run)
     .method("setData", &BayesFst::setData)
     .method("setRunParameters", &BayesFst::setRunParameters)
@@ -830,6 +845,8 @@ RCPP_MODULE(BayesFst) {
     .method("isDataLoaded", &BayesFst::isDataLoaded)
     .method("getPriorParams", &BayesFst::getPriorParameters)
     .method("setPriorParams", &BayesFst::setPriorParameters)
+    .method("getNumIterations", &BayesFst::getNumIterations)
+    .method("getThin", &BayesFst::getThin)
     .property("interaction", &BayesFst::getInteraction, &BayesFst::setInteraction)
     ;
 }

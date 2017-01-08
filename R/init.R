@@ -12,7 +12,7 @@ init = function(data){
   b = new(BayesFst)
   b$setData(data)
   
-  myObj = list(b = b)
+  myObj = list(b = b, data = data)
   
   class(myObj) = "bayesFst"
   
