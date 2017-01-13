@@ -851,6 +851,10 @@ RCPP_MODULE(BayesFst) {
     ;
 }
 
+//' @title Calculate Fst using the model 
+//' @param results - the output of \code{\link{sample.bayesFst}}
+//' @return a matrix with \code{nout} rows and \code{nloci * npop} columns
+//' @export
 // [[Rcpp::export]]
 NumericMatrix CalcFst(List results){
   int nout = as<int>(results["nout"]);
@@ -858,7 +862,7 @@ NumericMatrix CalcFst(List results){
   int npop = as<int>(results["npop"]);
   bool bInteraction = as<bool>(results["interaction"]);
   
-  NumericMatrix fst(nout - 1, nloc * npop);
+  NumericMatrix fst(nout, nloc * npop);
   NumericMatrix alpha = as<NumericMatrix>(results["alpha"]);
   NumericMatrix beta = as<NumericMatrix>(results["beta"]);
   NumericMatrix gamma;
