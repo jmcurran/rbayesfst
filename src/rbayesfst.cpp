@@ -749,6 +749,7 @@ public:
         
         int ctr = 0;
         Progress p1(m_nDiscard, true);
+        Progress p2(m_nNumIt, true);
 
         for (int nCurrentIteration = -m_nDiscard; nCurrentIteration <= m_nNumIt; nCurrentIteration++){
             bIllegal = false;
@@ -758,6 +759,8 @@ public:
 
             if(nCurrentIteration < 0)
               p1.increment();
+            else
+              p2.increment();
 
             if(nCurrentIteration > 0){
                 if ((nCurrentIteration / m_nKeep) * m_nKeep == nCurrentIteration){
@@ -783,10 +786,23 @@ public:
               double percentDone = 100.0 * nCurrentIteration / (double) m_nNumIt;
               
               // see if the user wants to halt computation
-              Rcpp::checkUserInterrupt();
+              // Rcpp::checkUserInterrupt();
+              if(nCurrentIteration < 0){
+                if(p1.check_abort()){
+                  Rprintf("User interrupted\n");
+                  List emptyList;
+                  return emptyList;
+                }
+              }else{
+                if(p2.check_abort()){
+                  Rprintf("User interrupted\n");
+                  List emptyList;
+                  return emptyList;
+                }
+              }
               
-              if(percentDone > 0)
-                Rprintf("Percent: %5.2f Iter: %8d, Accpt. rate: %12.6f%12.6f\n", percentDone, nCurrentIteration, ((double)(jmp1)/m_nAcceptanceRateGap), ((double)(jmp2)/m_nAcceptanceRateGap/m_nLoci));
+              //if(percentDone > 0)
+              //  Rprintf("Percent: %5.2f Iter: %8d, Accpt. rate: %12.6f%12.6f\n", percentDone, nCurrentIteration, ((double)(jmp1)/m_nAcceptanceRateGap), ((double)(jmp2)/m_nAcceptanceRateGap/m_nLoci));
               
               jmp1=0;
               jmp2=0;

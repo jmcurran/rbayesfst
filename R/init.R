@@ -4,6 +4,7 @@
 #'
 #' @return an object of class \code{bayesFst}
 #' 
+#' @importFrom methods new
 #' @examples 
 #' bd = readData(system.file("extdata", "data_BB04.json", package = "rbayesfst"))
 #' bf = init(bd)

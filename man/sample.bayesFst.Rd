@@ -9,7 +9,14 @@
 \arguments{
 \item{x}{an object class \code{bayesFst}}
 
+\item{size}{the desired numbers of samples to be taken from the posterior distribution of the parameters}
+
+\item{seed}{a positive (32 bit) integer to be used as a random number seed in a Mersenne-Twister random number generator. This package uses the C++ `random` library.}
+
 \item{\ldots}{not used}
+}
+\value{
+a list
 }
 \description{
 Sample from the posterior distribution of Fst
@@ -19,5 +26,4 @@ If you want to change some of the parameters for the MCMC algorithm, other than 
 }
 \seealso{
 \code{\link{setInteraction}}, \code{\link{setPriors}}, \code{\link{setRunParams}}
- @return a list
 }

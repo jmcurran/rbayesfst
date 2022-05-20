@@ -14,7 +14,7 @@
 #' bd = readData(system.file("extdata", "data_BB04.json", package = "rbayesfst"))
 #' bf = init(bd)
 #' ## set things up for a short test run
-#' setRunParameters(bd, numOut = 20)
+#' setRunParams(bf, numOut = 20)
 setRunParams = function(x, 
                         numOut = 2001, 
                         keepPpn = 0.2, 

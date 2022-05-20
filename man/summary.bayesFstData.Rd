@@ -4,10 +4,10 @@
 \alias{summary.bayesFstData}
 \title{Summary information for \code{bayesFstData} objects}
 \usage{
-\method{summary}{bayesFstData}(x, ...)
+\method{summary}{bayesFstData}(object, ...)
 }
 \arguments{
-\item{x}{An object of class \code{bayesFstData}.}
+\item{object}{An object of class \code{bayesFstData}.}
 
 \item{\ldots}{Not used.}
 }

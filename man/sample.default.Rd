@@ -17,8 +17,6 @@ or a positive integer.}
 \item{prob}{a vector of probability weights for obtaining the elements of 
 the vector being sampled.}
 
-\item{n}{a positive number, the number of items to choose from.}
-
 \item{\ldots}{any other arguments. Not used.}
 }
 \description{

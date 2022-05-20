@@ -10,7 +10,6 @@ sample = function(x, ...){
 #' 
 #' @param x either a vector of one or more elements from which to choose,
 #' or a positive integer. 
-#' @param n a positive number, the number of items to choose from.
 #' @param size a non-negative integer giving the number of items to choose.
 #' @param replace should sampling be with replacement?
 #' @param prob a vector of probability weights for obtaining the elements of 
@@ -23,10 +22,14 @@ sample.default = function(x, size, replace = FALSE, prob = NULL, ...){
 }
 #' Sample from the posterior distribution of Fst
 #' @param x an object class \code{bayesFst}
+#' @param size the desired numbers of samples to be taken from the posterior distribution of the parameters
+#' @param seed a positive (32 bit) integer to be used as a random number seed in a Mersenne-Twister random number generator. This package uses the C++ `random` library.
 #' @param \ldots not used
 #' @note If you want to change some of the parameters for the MCMC algorithm, other than the number of outputs, then use the specific methods to do this. They cannot be changed here.
 #' @seealso \code{\link{setInteraction}}, \code{\link{setPriors}}, \code{\link{setRunParams}}
-#'  @return a list 
+#' @importFrom coda mcmc
+#' @importFrom stats runif
+#' @return a list 
 #' @export
 sample.bayesFst = function(x, size = NULL, seed = floor(runif(1, 0, 2^32) + 1), ...){
   if(!is.null(size)){

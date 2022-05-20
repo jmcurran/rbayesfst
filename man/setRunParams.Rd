@@ -36,5 +36,5 @@ This function sets values in a C++ object. As a consequence it DOES NOT need to 
 bd = readData(system.file("extdata", "data_BB04.json", package = "rbayesfst"))
 bf = init(bd)
 ## set things up for a short test run
-setRunParameters(bd, numOut = 20)
+setRunParams(bf, numOut = 20)
 }
