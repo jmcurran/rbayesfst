@@ -15,6 +15,11 @@
 #' bf = init(bd)
 #' ## set things up for a short test run
 #' setRunParameters(bd, numOut = 20)
-setRunParams = function(x, numOut = 2001, keepPpn = 0.2, discardPpn = 0.05, acceptPpn = 0.02, print = FALSE){
+setRunParams = function(x, 
+                        numOut = 2001, 
+                        keepPpn = 0.2, 
+                        discardPpn = 0.05, 
+                        acceptPpn = 0.02, 
+                        print = FALSE){
   x$b$setRunParameters(numOut, keepPpn, discardPpn, acceptPpn, print)
 }

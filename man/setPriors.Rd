@@ -4,8 +4,18 @@
 \alias{setPriors}
 \title{Set the values of the parameters for the priors}
 \usage{
-setPriors(x, alphaMu = 0, alphaSigma = 1, betaMu = -2, betaSigma = 1.8,
-  gammaMu = 0, gammaSigma = 0.5, uSigma = 0.5, pSigma = 1000, cor = 0)
+setPriors(
+  x,
+  alphaMu = 0,
+  alphaSigma = 1,
+  betaMu = -2,
+  betaSigma = 1.8,
+  gammaMu = 0,
+  gammaSigma = 0.5,
+  uSigma = 0.5,
+  pSigma = 1000,
+  cor = 0
+)
 }
 \arguments{
 \item{x}{an object of type bayesFst}
@@ -20,13 +30,16 @@ setPriors(x, alphaMu = 0, alphaSigma = 1, betaMu = -2, betaSigma = 1.8,
 
 \item{gammaMu}{mean of Normal distribution for prior of the locus x population interaction effect gamma[i,j]}
 
+\item{gammaSigma}{sd of Normal distribution for prior the locus x population interaction effect of gamma[i,j]}
+
 \item{uSigma}{scale param for Normal updates}
 
 \item{pSigma}{scale param for Dirichlet updates of the allele frequencies p[i,j]}
 
 \item{cor}{The correlation parameter (fixed) between adjacent loci}
-
-\item{gammaSigam}{sd of Normal distribution for prior the locus x population interaction effect of gamma[i,j]}
+}
+\description{
+Set the values of the parameters for the priors
 }
 \note{
 This function directly affects a C++ object and therefore DOES NOT return anything.
@@ -43,4 +56,3 @@ print(bf)
 \seealso{
 getPriors
 }
-

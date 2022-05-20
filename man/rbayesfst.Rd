@@ -3,7 +3,6 @@
 \docType{package}
 \name{rbayesfst}
 \alias{rbayesfst}
-\alias{rbayesfst-package}
 \title{Bayesian Estimation of Fst}
 \description{
 rbayesfst
@@ -14,4 +13,3 @@ An R interface to the BayesFst programme. This is a Metropolis algorithm for est
 \author{
 James Curran, David Balding, Mark Beaumont
 }
-

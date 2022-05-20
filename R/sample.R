@@ -7,9 +7,18 @@ sample = function(x, ...){
   UseMethod("sample")
 }
 #' Default call to base R \code{\link[base]{sample}} function
+#' 
+#' @param x either a vector of one or more elements from which to choose,
+#' or a positive integer. 
+#' @param n a positive number, the number of items to choose from.
+#' @param size a non-negative integer giving the number of items to choose.
+#' @param replace should sampling be with replacement?
+#' @param prob a vector of probability weights for obtaining the elements of 
+#' the vector being sampled.
+#' @param \ldots any other arguments. Not used.
 #' @seealso \code{\link[base]{sample}}
 #' @export
-sample.default = function(x, size, replace = FALSE, prob = NULL){
+sample.default = function(x, size, replace = FALSE, prob = NULL, ...){
   base::sample(x, size, replace, prob)
 }
 #' Sample from the posterior distribution of Fst

@@ -4,8 +4,14 @@
 \alias{setRunParams}
 \title{Set the parameters for the MCMC run}
 \usage{
-setRunParams(x, numOut = 2001, keepPpn = 0.2, discardPpn = 0.05,
-  acceptPpn = 0.02, print = FALSE)
+setRunParams(
+  x,
+  numOut = 2001,
+  keepPpn = 0.2,
+  discardPpn = 0.05,
+  acceptPpn = 0.02,
+  print = FALSE
+)
 }
 \arguments{
 \item{x}{an object of class bayesFst}
@@ -20,6 +26,9 @@ setRunParams(x, numOut = 2001, keepPpn = 0.2, discardPpn = 0.05,
 
 \item{print}{controls the output of something but I forget what at this point}
 }
+\description{
+Set the parameters for the MCMC run
+}
 \note{
 This function sets values in a C++ object. As a consequence it DOES NOT need to be re-assigned.
 }
@@ -29,4 +38,3 @@ bf = init(bd)
 ## set things up for a short test run
 setRunParameters(bd, numOut = 20)
 }
-

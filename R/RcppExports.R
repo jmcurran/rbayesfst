@@ -6,6 +6,6 @@
 #' @return a matrix with \code{nout} rows and \code{nloci * npop} columns
 #' @export
 CalcFst <- function(results) {
-    .Call('rbayesfst_CalcFst', PACKAGE = 'rbayesfst', results)
+    .Call('_rbayesfst_CalcFst', PACKAGE = 'rbayesfst', results)
 }
 

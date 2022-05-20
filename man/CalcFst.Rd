@@ -12,4 +12,6 @@ CalcFst(results)
 \value{
 a matrix with \code{nout} rows and \code{nloci * npop} columns
 }
-
+\description{
+Calculate Fst using the model
+}

@@ -12,4 +12,3 @@ printData(b)
 \description{
 Print the data bound to an Bayes Fst Object
 }
-

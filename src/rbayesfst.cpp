@@ -197,7 +197,7 @@ private:
         sum = 0.0;
         konst = std::accumulate(par.begin(), par.end(), 0.0);
         
-        for(int j = 0; j < par.size(); j++){
+        for(int j = 0; j < (int)par.size(); j++){
             sum += (par[j] - 1.0) * std::log(vec[j]);
             //if(debug) Rprintf("j = %d, sum = %f, par[j] = %f, vec[j] = %f\n", j, sum, par[j], vec[j]);
             sum -= std::lgamma(par[j]);
@@ -788,7 +788,8 @@ public:
               if(percentDone > 0)
                 Rprintf("Percent: %5.2f Iter: %8d, Accpt. rate: %12.6f%12.6f\n", percentDone, nCurrentIteration, ((double)(jmp1)/m_nAcceptanceRateGap), ((double)(jmp2)/m_nAcceptanceRateGap/m_nLoci));
               
-                jmp1=0; jmp2=0;
+              jmp1=0;
+              jmp2=0;
             }
         }
         /*ProfilerStop();

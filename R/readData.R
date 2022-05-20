@@ -72,7 +72,8 @@
 #' \code{gammaSwitch} \tab either \code{TRUE} or \code{FALSE} depending on whether locus and popuation effects interact or not.\cr
 #' \code{name} \tab the fully qualified file name of the data set. Note that if an .inp file has been saved into JSON format, then the name of the JSON file is the name, not the original data.\cr
 #' }
-#' @export
+#' @importFrom jsonlite fromJSON
+#' @export 
 #' 
 #' @examples
 #' ## Example using the data provided by Balding from the web. 

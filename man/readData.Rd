@@ -99,4 +99,3 @@ summary(bd)
 \seealso{
 summary.bayesFstData
 }
-

@@ -7,5 +7,5 @@
 #' @title Bayesian Estimation of Fst
 #' 
 #' @author James Curran, David Balding, Mark Beaumont
-#' @useDynLib rbayesfst
+#' @useDynLib rbayesfst, .registration = true
 NULL

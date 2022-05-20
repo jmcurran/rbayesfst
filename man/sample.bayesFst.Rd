@@ -4,8 +4,7 @@
 \alias{sample.bayesFst}
 \title{Sample from the posterior distribution of Fst}
 \usage{
-\method{sample}{bayesFst}(x, size = NULL, seed = floor(runif(1, 0, 2^32) +
-  1), ...)
+\method{sample}{bayesFst}(x, size = NULL, seed = floor(runif(1, 0, 2^32) + 1), ...)
 }
 \arguments{
 \item{x}{an object class \code{bayesFst}}
@@ -22,4 +21,3 @@ If you want to change some of the parameters for the MCMC algorithm, other than 
 \code{\link{setInteraction}}, \code{\link{setPriors}}, \code{\link{setRunParams}}
  @return a list
 }
-

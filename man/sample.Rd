@@ -14,4 +14,3 @@ sample(x, ...)
 \description{
 sample generic
 }
-

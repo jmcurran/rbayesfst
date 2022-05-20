@@ -2,7 +2,8 @@ Package: rbayesfst
 Type: Package
 Title: Bayesian Estimation of Fst
 Version: 0.1
-Date: 2016-12-05
+Date: 2022-05-18
+Encoding: UTF-8
 Author: James Curran, David Balding, Karen Ayres, Mark Beaumont, Paul O'Reilly
 Maintainer: James Curran <j.curran@auckland.ac.nz>
 Description: An R interface to the BayesFst programme. This is a Metropolis algorithm for estimating F_ST, the correlation of two homologous genes sampled within the same subpopulation, relative to the total population. Among other
@@ -22,4 +23,4 @@ Depends:
     RcppProgress (>= 0.1)
 LinkingTo: Rcpp, RcppProgress
 RcppModules: bayesfst
-RoxygenNote: 5.0.1
+RoxygenNote: 7.2.0

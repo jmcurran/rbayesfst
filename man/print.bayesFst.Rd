@@ -17,4 +17,3 @@ Provides a simple summary of the input data used with this package.
 \seealso{
 readData
 }
-

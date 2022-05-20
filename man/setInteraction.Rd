@@ -11,6 +11,9 @@ setInteraction(x, bInteraction = TRUE)
 
 \item{bInteraction}{if \code{TRUE} then the interaction (gamma) terms are used in the model, otherwise they are not.}
 }
+\description{
+Change the model to use (or not use) the interaction term
+}
 \note{
 This function changes a value in a C++ object. As a consequence it DOES NOT need to be reassigned.
 }
@@ -23,4 +26,3 @@ setInteraction(bf)
 ## note how the model has changed even though there is no reassignment
 print(bf)
 }
-

@@ -5,9 +5,14 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // CalcFst
 NumericMatrix CalcFst(List results);
-RcppExport SEXP rbayesfst_CalcFst(SEXP resultsSEXP) {
+RcppExport SEXP _rbayesfst_CalcFst(SEXP resultsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -15,4 +20,17 @@ BEGIN_RCPP
     rcpp_result_gen = Rcpp::wrap(CalcFst(results));
     return rcpp_result_gen;
 END_RCPP
+}
+
+RcppExport SEXP _rcpp_module_boot_BayesFst();
+
+static const R_CallMethodDef CallEntries[] = {
+    {"_rbayesfst_CalcFst", (DL_FUNC) &_rbayesfst_CalcFst, 1},
+    {"_rcpp_module_boot_BayesFst", (DL_FUNC) &_rcpp_module_boot_BayesFst, 0},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_rbayesfst(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
 }

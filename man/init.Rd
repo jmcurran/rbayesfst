@@ -19,4 +19,3 @@ Intialise a new Bayes Fst Object
 bd = readData(system.file("extdata", "data_BB04.json", package = "rbayesfst"))
 bf = init(bd)
 }
-

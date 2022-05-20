@@ -1,1 +1,1 @@
-loadModule("BayesFst", TRUE)
+Rcpp::loadModule("BayesFst", TRUE)

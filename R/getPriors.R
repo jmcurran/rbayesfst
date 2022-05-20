@@ -3,12 +3,12 @@
 #' @param x an object of class bayesFst
 #'
 #' @return a list containing the following values \tabular{ll}{
-#' \code{alpha} \tab a vector containing the mean and std. dev. for the alphas\\
-#' \code{beta} \tab a vector containing the mean and std. dev. for the betas\\
-#' \code{gamma} \tab a vector containing the mean and std. dev. for the gammas\\
-#' \code{uSigma} \tab the scale parameter for the alphas\\
-#' \code{pSigma} \tab the scale parameters for the p's (the allele frequencies)\\n
-#' \code{cor} \tab the correlation parameter (fixed) between adjacent loci
+#' \code{alpha} \tab a vector containing the mean and std. dev. for the alphas\cr
+#' \code{beta} \tab a vector containing the mean and std. dev. for the betas\cr
+#' \code{gamma} \tab a vector containing the mean and std. dev. for the gammas\cr
+#' \code{uSigma} \tab the scale parameter for the alphas\cr
+#' \code{pSigma} \tab the scale parameters for the p's (the allele frequencies)\cr
+#' \code{cor} \tab the correlation parameter (fixed) between adjacent loci\cr
 #' }
 #' @seealso \code{setPriors}
 #' @export
