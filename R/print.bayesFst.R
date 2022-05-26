@@ -10,7 +10,7 @@
 print.bayesFst = function(x, ...){
   cat("This object provides the input parameters and data for the Bayesian estimation\n")
   cat("of Fst. The model is\n\n")
-  cat("\tFst[i,j] = alpha[i] + beta[j]")
+  cat("\tlogit(Fst[i,j]) = alpha[i] + beta[j]")
   
   if(x$b$interaction){
     cat(" + gamma[i,j]\n\n")

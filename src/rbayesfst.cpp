@@ -706,15 +706,15 @@ public:
         init_gen(m_nSeed);
 
         initFst();
-        printFstSummary();
+        //printFstSummary();
         
         /* INITIALISE HYPERPARAMETER VECTORS (a, b) - GENERATE FROM PRIOR */
         initHyperparams();
-        printHyperparams();
+        //printHyperparams();
         
         // Initialise allele frequencies
         initAlleleFreqs();
-        printInitialPvals();
+        //printInitialPvals();
         
         /* INITIALISE LOG-POSTERIOR DENSITY VALUE (z) */
 
